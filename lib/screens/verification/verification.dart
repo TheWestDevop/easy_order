@@ -1,4 +1,3 @@
-import 'package:easy_order/bloc/bloc.dart';
 import 'package:easy_order/services/services.dart';
 import 'package:easy_order/widgets/widget.dart';
 import 'package:flutter/material.dart';

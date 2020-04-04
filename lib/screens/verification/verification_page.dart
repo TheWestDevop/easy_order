@@ -16,7 +16,7 @@ class _VerificationFormState extends State<VerificationForm> {
 
    return new Scaffold(
               resizeToAvoidBottomPadding: false,
-              appBar: appBarField(context,'/cart',Constant.verificationLabel),
+              appBar: appBarField(context,Constant.verificationLabel),
               body: ListView(
      scrollDirection: Axis.vertical,
      children:<Widget>[ 

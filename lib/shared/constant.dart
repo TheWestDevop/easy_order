@@ -13,25 +13,35 @@ class Constant {
   static const String passwordPlaceholder = "Password";
   static const String passwordResetlabel = "Reset Password";
   static const String forgot_password = "Forgot Password ?";
-  static const String loginBtn = "Go Cash";
+  static const String loginBtn = "Login";
+  static const String registerBtn = "Register";
   static const String loginWithPhoneBtn = "Use Phone Number";
-  static const String newUserlabel = "New to SmorCash ?";
-  static const String oldUserlabel = "Have an account on SmorCash ?";
+  static const String newUserlabel = "New to SMOR?";
+  static const String oldUserlabel = "Have an account on SMOR already?";
   static const String registerLabel = "Register";
   static const String loginLabel = "Login";
+  static const String logOutLabel = "Log out";
   static const String nextLabel = "Next";
   static const String goBackLabel = "Go Back To";
   static const String otpPlaceholder = "OTP Code";
-  static const String sendOTPPlaceholder = "Send OTP";
+  static const String sendOTPPlaceholder = "Confirm";
   static const String orderLabel = "Order Note";
   static const String verificationLabel = "Verification Order";
   static const String placeOrderBtn = "Place Order Now";
-  static const String orderListPlaceholder = "Order List";
-  static const String avaliableProduct = "Avaliable Products";
+  static const String orderListPlaceholder = "Orders List";
+  static const String avaliableProduct = "Market";
   static const String productDetail = "Product Detail";
   static const String cartItem = "Cart Items";
   static const String searchPlaceholder = "Search Product";
   static const String checkoutLabel = "Check Out";
+  static const String verifyOTPLabel = "Verify OTP";
+  static const String kitchenLabel = "Kitchens";
+  static const String chefsLabel = "Chefs";
+  static const String chatLabel = "Messanger";
+  static const String profileLabel = "Profile";
+
+
+
 
 
 

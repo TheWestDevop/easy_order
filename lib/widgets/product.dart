@@ -1,13 +1,13 @@
 
 import 'dart:async';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_order/models/models.dart';
 import 'package:easy_order/services/services.dart';
 import 'package:easy_order/shared/shared.dart';
 import 'package:easy_order/viewModel/viewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating/flutter_rating.dart';
-import 'package:provider/provider.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 Widget productTable(context,List<Product> product){
@@ -29,7 +29,7 @@ Widget productTable(context,List<Product> product){
 Widget searchField(){
   return TextFormField(
                             decoration:InputDecoration(
-                            prefixIcon: Icon(Icons.search,color:Colors.deepPurple),
+                            prefixIcon: Icon(Icons.search,color:Colors.deepPurple[900]),
                             labelText: Constant.searchPlaceholder,
                             labelStyle: TextStyle(
                               fontFamily:'Montserrat',
@@ -40,8 +40,7 @@ Widget searchField(){
                             ),
                             
                             //onChanged: bloc.changeUserStore
-                          );
-                        
+                          );                       
 }
 
 Widget productsGrid(List<Product> data,aspectRadtio){
@@ -81,7 +80,7 @@ Widget productsGrid(List<Product> data,aspectRadtio){
                               children: <Widget>[
                                 Expanded(
                                   child: Container(
-                                    child: Image.network(data[index].image,fit: BoxFit.contain,),
+                                    child: cacheImage(data[index].image),
                                   ),
                                 ),
                                 SizedBox(width:10.0,),
@@ -95,7 +94,7 @@ Widget productsGrid(List<Product> data,aspectRadtio){
                         SizedBox(height: 10.0,),
                         Padding(
                           padding: EdgeInsets.only(left: 10.0),
-                          child: Text("${data[index].title}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15.0),),
+                          child: Text("${data[index].title}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15.0,color: Colors.deepPurple[900]),),
                         ),
                         Padding(
                           padding: EdgeInsets.only(left: 10.0),
@@ -111,7 +110,7 @@ Widget productsGrid(List<Product> data,aspectRadtio){
                               ),
                               Padding(
                                 padding: EdgeInsets.only(right: 10.0),
-                                child: Text("\#${data[index].price.toString()}",style: TextStyle(fontWeight: FontWeight.bold),),
+                                child: Text("\#${data[index].price.toString()}",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.deepPurple[900]),),
                               )
                             ],
                           ),
@@ -141,103 +140,6 @@ Widget productsGrid(List<Product> data,aspectRadtio){
       ),
     );
   }
-
-
-Widget productDetails(Product item,PageController _controller,CartViewModel viewModel,int active, Function showSnak,Function setState){
-  return Container(
-            decoration: BoxDecoration(
-                border: Border(
-                    top: BorderSide(
-                        color: Colors.grey[300],
-                        width: 1.0
-                    )
-                )
-            ),
-            child: ListView(
-              children: <Widget>[
-                Stack(
-                  children: <Widget>[
-                    Container(
-                      height: 280.0,
-                      padding: EdgeInsets.only(top: 10.0),
-                      color: Colors.white,
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            height: 200.0,
-                            child: PageView(
-                              controller: _controller,
-                              onPageChanged: (index){
-                                print(index);
-                                setState(() {
-                                                                  active = index;
-                                                                });
-                                                              },
-                                                              children: <Widget>[
-                                                                Image.network(item.image,height: 150.0,),
-                                                                Image.network(item.image,height: 150.0,),
-                                                                Image.network(item.image,height: 150.0,),
-                                                                Image.network(item.image,height: 150.0,)
-                                                              ],
-                                                            ),
-                                                          ),
-                                                          SizedBox(height: 10.0,),
-                                                          Row(
-                                                            mainAxisAlignment: MainAxisAlignment.center,
-                                                            children: <Widget>[
-                                                              buildDot(active,0),
-                                                              buildDot(active,1),
-                                                              buildDot(active,2),
-                                                              buildDot(active,3)
-                                                            ],
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                        height: 270.0,
-                                                        alignment: Alignment(1.0, 1.0),
-                                                        child: Padding(
-                                                          padding: EdgeInsets.only(right: 15.0),
-                                                          child: Column(
-                                                            verticalDirection: VerticalDirection.down,
-                                                            crossAxisAlignment: CrossAxisAlignment.end,
-                                                            mainAxisAlignment: MainAxisAlignment.end,
-                                                            children: <Widget>[
-                                                              
-                                                                GestureDetector(
-                                                                    onTap: (){
-                                                                      print(item);
-                                                                      viewModel.addToFav(item);
-                                                                      showSnak(item.fav,item.title);
-                                                                    },
-                                                                    child: item.fav ? Icon(Icons.favorite,size: 20.0,color: Colors.red,) : Icon(Icons.favorite_border,size: 20.0,),
-                                                                  )
-                                                
-                                                            ],
-                                                          ),
-                                                        )
-                                                    )
-                                                  ],
-                                                ),
-                                                Divider(color: Colors.grey[300],height: 1.0,),
-                                                Container(
-                                                  padding: EdgeInsets.symmetric(horizontal: 50.0,vertical: 20.0),
-                                                  child: Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                    children: <Widget>[
-                                                      Text(item.title,style: TextStyle(fontWeight: FontWeight.w500,fontSize: 19.0),),
-                                                      Padding(
-                                                        padding: EdgeInsets.only(top: 10.0),
-                                                        child: Text(item.description),
-                                                      )
-                                                    ],
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          );
-                                }
 
 
 Widget generateCart(Product product){
@@ -275,8 +177,8 @@ Widget generateCart(Product product){
                   topRight: Radius.circular(10.0),
                   bottomRight: Radius.circular(10.0)
                 ),
-                image: DecorationImage(image: NetworkImage(product.image),fit: BoxFit.fill)
               ),
+              child: cacheImage(product.image),
             ),
             Expanded(
               child: Padding(
@@ -287,7 +189,7 @@ Widget generateCart(Product product){
                     Row(
                       children: <Widget>[
                         Expanded(
-                          child: Text(product.title,style: TextStyle(fontWeight: FontWeight.w600,fontSize: 15.0),),
+                          child: Text(product.title,style: TextStyle(fontWeight: FontWeight.w600,fontSize: 15.0,color: Colors.deepPurple[900]),),
                         ),
                         Container(
                             alignment: Alignment.bottomRight,
@@ -308,7 +210,7 @@ Widget generateCart(Product product){
                         ],
                     ),
                     SizedBox(height: 5.0,),
-                    Text("Price ${product.price.toString()}"),
+                    Text("Price #${product.price.toString()}",style: TextStyle(fontWeight: FontWeight.w600,fontSize: 15.0,color: Colors.deepPurple[900])),
 
                   ],
                 ),
@@ -357,7 +259,7 @@ Widget productDetailsBottomNavigation(Product item,CartViewModel viewModel,Funct
                           width: 60.0,
                           child: Text("Total Amount",style: TextStyle(fontSize: 12.0,color: Colors.grey),),
                         ),
-                        Text("\#${item.price.toString()}",style: TextStyle(fontSize: 25.0,fontWeight: FontWeight.w600)),
+                        Text("\#${item.price.toString()}",style: TextStyle(fontSize: 25.0,fontWeight: FontWeight.w600,color: Colors.deepPurple[900])),
                       ],
                     ),
                   ),
@@ -377,4 +279,20 @@ Widget productDetailsBottomNavigation(Product item,CartViewModel viewModel,Funct
                 ],
               )
           );
+}
+
+Widget cacheImage(String url){
+ return CachedNetworkImage(
+        imageUrl: url,
+        imageBuilder: (context, imageProvider) => Container(
+        decoration: BoxDecoration(
+        image: DecorationImage(
+          image: imageProvider,
+          fit: BoxFit.cover,
+        ),
+        )
+        ),
+        placeholder: (context, url) => CircularProgressIndicator(),
+        errorWidget: (context, url, error) => Icon(Icons.error),
+     );
 }

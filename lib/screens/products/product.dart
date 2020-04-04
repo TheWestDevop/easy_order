@@ -1,4 +1,5 @@
 
+import 'package:easy_order/models/models.dart';
 import 'package:easy_order/services/services.dart';
 import 'package:easy_order/viewModel/viewModel.dart';
 import 'package:easy_order/widgets/widget.dart';
@@ -15,8 +16,7 @@ class Products extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      return Scaffold(
-                body: ProductView(),
-       );
+      return ProductView();
+       
   }  
 }

@@ -15,7 +15,7 @@ class _CartPageState extends State<CartPage> {
           builder: (context,child,model){
       return Scaffold(
                 resizeToAvoidBottomPadding: false,  
-                appBar: appBarField(context,'/products',Constant.cartItem),
+                appBar: appBarField(context,Constant.cartItem),
                 body: cartList(model),
                 bottomNavigationBar: checkoutBottomNavigation(context,model),
        );

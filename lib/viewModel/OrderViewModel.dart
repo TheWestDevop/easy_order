@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 
 class OrderViewModel extends ChangeNotifier {
 
-  OrderServices _order;
-  // Profile profile;
-  // Transactions transactions;
+
+  final _orderService = locator<OrderService>();
+  
 
 place_order(Order data) async {
-     _order.setStatus(AppState.Busy);
-    final verify = _order.make_order(data);
+     _orderService.setStatus(AppState.Busy);
+    final verify = _orderService.make_order(data);
    
     // if (verify != null) {
      

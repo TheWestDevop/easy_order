@@ -1,23 +1,24 @@
 part of 'order.dart';
 
 
-class OrderForm extends StatefulWidget {
+class OrderPage extends StatefulWidget {
 
 
   @override
-  _OrderFormState createState() => _OrderFormState();
+  _OrderPageState createState() => _OrderPageState();
 }
 
-class _OrderFormState extends State<OrderForm> {  
+class _OrderPageState extends State<OrderPage> {  
 
   @override
   Widget build(BuildContext context) {
 
-   final bloc = Provider.of<HomeBloc>(context);
+   //final bloc = Provider.of<HomeBloc>(context);
+   AuthViewModel account =  locator<AuthViewModel>();
 
    return new Scaffold(
               resizeToAvoidBottomPadding: false,
-              appBar: appBarField(context,'/',Constant.orderLabel),
+              appBar: homebar(context,Constant.orderListPlaceholder,account.userProfile.avatar),
               body: ListView(
               scrollDirection: Axis.vertical,
               children:<Widget>[ 
@@ -28,15 +29,10 @@ class _OrderFormState extends State<OrderForm> {
                     padding: EdgeInsets.only(top:35,left:20.0,right:20.0),
                     child: Column(
                         children:<Widget>[
-                          // storeField(bloc),
-                          // SizedBox(height:20.0),
-                          noteField(),
-                          SizedBox(height:40.0,),
-                          nextBtn(context,'/place_order'),
-                          //SizedBox(height:20.0,),
-                          //loginUsePhone(context),
-                          //SizedBox(height:20.0,),
-                          //registerLink(context)
+                          Center(
+                            child:Text('List of User Orders'),
+                          )
+                         
                          ],
                       ),
                   ),
@@ -44,6 +40,7 @@ class _OrderFormState extends State<OrderForm> {
                   )
                 ],
               ),
+              //bottomNavigationBar: bottomNavBar(context,1),
      );    
   }
 }

@@ -2,5 +2,7 @@ enum AppState {
   Idle,
   Busy,
   Retrieved,
-  Error
+  Error,
+  Authenticated,
+  UnAuthenticated,
 }

@@ -1,3 +1,4 @@
+import 'package:easy_order/widgets/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_order/shared/shared.dart';
 
@@ -9,9 +10,9 @@ class Error extends StatefulWidget {
 class _ErrorState extends State<Error> {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-       home: new Scaffold(
+    return new Scaffold(
       resizeToAvoidBottomPadding: false,
+      //appBar: authAppBarField(context,),
      body: Column(
        crossAxisAlignment: CrossAxisAlignment.stretch,
        children:<Widget>[
@@ -22,9 +23,9 @@ class _ErrorState extends State<Error> {
              Container(
               padding: EdgeInsets.fromLTRB(15.0,110.0,0.0,0.0),
               child: Text(
-                'Ooh Sorry,Not Found',
+                'Ooh sorry page not found',
                 style:TextStyle(
-                  fontSize:50.0,fontWeight:FontWeight.bold)
+                  fontSize:30.0,fontWeight:FontWeight.bold)
                 ),
               ),
               Container(
@@ -103,7 +104,6 @@ class _ErrorState extends State<Error> {
         )
        ]
      ),
-    ),
     );
   }
 }
