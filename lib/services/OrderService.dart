@@ -11,7 +11,7 @@ class OrderService extends ChangeNotifier {
   AppState  _status = AppState.Idle;
   String _message;
   Order _order;
-  API api;
+  API _api;
 
   OrderService() {
     //_status = AppState.Idle;
@@ -34,7 +34,7 @@ class OrderService extends ChangeNotifier {
       
 
       String url = "${Constant.API_URL}order";
-      final response = await api.Put(url:url,data:data);
+      final response = await _api.Put(url:url,data:data);
   
      return jsonDecode(response.body['message']);
 
@@ -54,7 +54,7 @@ class OrderService extends ChangeNotifier {
      
       final data = {"order_id":orderId};
       String url = "${Constant.API_URL}order/status";
-      final response = await api.Post(url:url,data:data);
+      final response = await _api.Post(url:url,data:data);
      
       
       return jsonDecode(response.body['message']);

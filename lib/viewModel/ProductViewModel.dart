@@ -8,7 +8,6 @@ import 'package:easy_order/shared/shared.dart';
 import 'package:easy_order/viewModel/viewModel.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
@@ -16,11 +15,13 @@ import 'package:path/path.dart';
 class ProductViewModel extends Model {
 
   ProductService productService = locator<ProductService>();
+  //AppViewModel _productViewModel = locator<AppViewModel>();
   String cartMessage = "";
   final LocalStorage storage = new LocalStorage('app_data');
   bool success = false;
   Directory tempDir;
   String tempPath;
+
 
   List<Product> _data = [];
   Database db;
@@ -32,12 +33,10 @@ class ProductViewModel extends Model {
   String  get message => _message;
 
   ProductViewModel(){
-    
+
     // Create DB Instance & Create Table
     createDB();
-    
-   
-    
+
   }
 
 
@@ -58,8 +57,8 @@ class ProductViewModel extends Model {
       String path = join(documentsDirectory.path, 'smor_product.db');
 
       print(path);
-      //await storage.deleteItem("isFirst");
-      //await this.deleteDB();
+      await storage.deleteItem("isFirst");
+      await this.deleteDB();
 
      var database = await openDatabase(path, version: 1, onOpen: (Database db) {
         this.db = db;
@@ -102,7 +101,7 @@ class ProductViewModel extends Model {
           "datetime DATETIME)";
 
       await this.db.execute(qry);
-      qry = "CREATE TABLE IF NOT EXISTS Profile ( "
+      qry = "CREATE TABLE IF NOT EXISTS Profile( "
           "id INTEGER,"
           "name Text,"
           "image Text,"
@@ -112,15 +111,37 @@ class ProductViewModel extends Model {
           "datetime DATETIME)";
 
       await this.db.execute(qry);
+      qry = "CREATE TABLE IF NOT EXISTS Kitchen( "
+          "id INTEGER,"
+          "title Text,"
+          "image Text,"
+          "location Text,"
+          "fav Text,"
+          "rating REAL,"
+          "datetime DATETIME)";
+
+      await this.db.execute(qry);
+      qry = "CREATE TABLE IF NOT EXISTS Chef( "
+          "id INTEGER,"
+          "name Text,"
+          "image Text,"
+          "location Text,"
+          "experience Text,"
+          "experience_years INTEGER,"
+          "fav INTEGER,"
+          "rating REAL,"
+          "datetime DATETIME)";
+
+      await this.db.execute(qry);
 
 
       var _flag = storage.getItem("isFirst");
       print("FLAG IS FIRST $_flag");
 
         if (_flag != null) {
+        this.removeAllProduct();
+        this.insertProductInLocal();
         this.fetchLocalProductData();
-       // _authViewModel.getState();
-        //_cartViewModel.fetchCartList();
       } else {
         this.insertProductInLocal();
         this.insertEmptyProfileToLocal();
@@ -150,7 +171,7 @@ class ProductViewModel extends Model {
       print(e);
     }
   }
-  
+
   insertEmptyProfileToLocal() async{
     try {
       await this.db.transaction((tx) async {
@@ -189,7 +210,7 @@ class ProductViewModel extends Model {
               qry += '${product.rating})';
 
             var _res = await tx.rawInsert(qry);
-
+            
           } catch (e) {
             print("ERRR >>>");
             print(e);
@@ -197,7 +218,7 @@ class ProductViewModel extends Model {
           _data.add(product);
           notifyListeners();
         }
-
+         print("Products Length ${_data.length}");
         storage.setItem("isFirst", "true");
       });
     } catch (e) {
@@ -205,13 +226,12 @@ class ProductViewModel extends Model {
       print(e);
     }
   }
+ 
   
 
 
   // Item List
   List<Product> get itemListing => _data;
-
-  
 
   // Item Add
   void addItem(Product product) {
@@ -222,5 +242,17 @@ class ProductViewModel extends Model {
     notifyListeners();
   }
 
-
+removeAllProduct() async {
+    try {
+      var qry = "DELETE FROM Products";
+      this.db.rawDelete(qry).then((data) {
+        print("Products Deleted");
+        notifyListeners();
+      }).catchError((e) {
+        print(e);
+      });
+    } catch (e) {
+      print("ERR rm product${e}");
+    }
+  }
 }

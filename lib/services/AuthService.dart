@@ -4,7 +4,7 @@ import 'package:easy_order/shared/shared.dart';
 
 class AuthService {
   
-API api;
+API _api;
 
 Map<String,dynamic> login(String email,String password){
  var user_data = {

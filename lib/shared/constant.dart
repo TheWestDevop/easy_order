@@ -33,10 +33,12 @@ class Constant {
   static const String productDetail = "Product Detail";
   static const String cartItem = "Cart Items";
   static const String searchPlaceholder = "Search Product";
+  static const String searchKitchenPlaceholder = "Search Kitchen";
+  static const String searchChefPlaceholder = "Search Chef";
   static const String checkoutLabel = "Check Out";
-  static const String verifyOTPLabel = "Verify OTP";
+  static const String verifyOTPLabel = "Verify";
   static const String kitchenLabel = "Kitchens";
-  static const String chefsLabel = "Chefs";
+  static const String chefLabel = "Chefs";
   static const String chatLabel = "Messanger";
   static const String profileLabel = "Profile";
 

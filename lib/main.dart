@@ -22,24 +22,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  
-
-
-  final productViewModel = locator<ProductViewModel>();
-
-  final cartViewModel = locator<CartViewModel>();
-
-  final authViewModel = locator<AuthViewModel>();
-
   final accountViewModel = locator<AccountViewModel>();
   final appViewModel = locator<AppViewModel>();
-
-  
- 
- 
-  
-
-  
+  final authViewModel = locator<AuthViewModel>();
+  final cartViewModel = locator<CartViewModel>();
+  final productViewModel = locator<ProductViewModel>();
 
  @override
   Widget build(BuildContext context) {
@@ -53,6 +40,10 @@ class _MyAppState extends State<MyApp> {
               model:appViewModel,
               child:ScopedModel<AccountViewModel>(
               model:accountViewModel,
+              child:ScopedModel<KitchenViewModel>(
+              model:KitchenViewModel(),
+              child: ScopedModel<ChefViewModel>(
+              model:ChefViewModel(),
               child: MaterialApp(
                   debugShowCheckedModeBanner: false,
                   home: Scaffold(
@@ -63,6 +54,8 @@ class _MyAppState extends State<MyApp> {
                       primaryColor: Colors.white
                   ),
         ),
+      ),
+      ),
       ),
       ),
       ),
@@ -79,7 +72,6 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-
  Preference userpreference;
 
  @override
@@ -88,6 +80,7 @@ class _MainScreenState extends State<MainScreen> {
      super.initState();
      
    }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<bool>(

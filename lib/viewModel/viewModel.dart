@@ -1,6 +1,8 @@
-export './OrderViewModel.dart';
-export './CartViewModel.dart';
-export './ProductViewModel.dart';
-export './AuthViewModel.dart';
-export './AccountViewModel.dart';
-export './AppViewModel.dart';
+export './orderViewModel.dart';
+export './cartViewModel.dart';
+export './productViewModel.dart';
+export './authViewModel.dart';
+export './accountViewModel.dart';
+export './appViewModel.dart';
+export './chefViewModel.dart';
+export './kitchenViewModel.dart';

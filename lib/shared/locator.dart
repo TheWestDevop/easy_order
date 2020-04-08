@@ -8,10 +8,14 @@ final locator = GetIt.I;
 void setupLocator() {
   // Register services
   locator.registerSingleton(ProductService());
-  locator.registerLazySingleton(() => OrderService());
-  locator.registerLazySingleton(() => AuthService());
+   locator.registerLazySingleton(() => AuthService());
   locator.registerLazySingleton(() => AccountService());
+  locator.registerLazySingleton(() => KitchenService());
+  locator.registerLazySingleton(() => ChefService());
+  locator.registerLazySingleton(() => OrderService());
   locator.registerLazySingleton(() => Preference());
+ 
+  
 
 
   // Register models
@@ -20,7 +24,8 @@ void setupLocator() {
   locator.registerLazySingleton(() => CartViewModel());
   locator.registerLazySingleton(() => AuthViewModel());
   locator.registerLazySingleton(() => AccountViewModel());
-  
+   locator.registerLazySingleton(() => KitchenViewModel());
+  locator.registerLazySingleton(() => ChefViewModel());
 
 
 }

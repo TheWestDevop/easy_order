@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 
 class ProductService extends ChangeNotifier {
 
-API api;
+API _api;
 
 List<Product> getProducts() {
     var demo_product = [
@@ -127,6 +127,10 @@ List<Product> getProducts() {
 
 ];
     return demo_product.map((data)=> Product.fromJson(data)).toList();
+}
+
+ProductService(){
+  //this.getProducts();
 }
 
 }

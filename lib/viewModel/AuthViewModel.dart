@@ -35,7 +35,7 @@ class AuthViewModel extends Model {
   
 
   AuthViewModel(){
-    _status = this.getState();
+    _status = _appViewModel.getState();
   }
 
 
@@ -43,25 +43,7 @@ void setStatus(AppState state) {
         _status = state;
        }
 
- AppState getState() {
-   
-   AppState state;
-
-   userpreference.isUserLoggedIn.then((res) {
-       if (res) {
-         print("Preferences :- $res ");
-         _appViewModel.setStatus(AppState.Authenticated);
-       } else {
-         print("Preferences :- $res ");
-         _appViewModel.setStatus(AppState.UnAuthenticated);
-       }
-    }).catchError((e) {
-      _appViewModel.setStatus(AppState.UnAuthenticated);
-    });
-   
-  return state;
-    
-  }
+ 
 
   
  fetchLocalProfile() async{

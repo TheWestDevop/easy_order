@@ -275,13 +275,14 @@ Widget otpField(context){
               TextFormField(
                 validator:(val)=>validateStringField(val),
                 decoration:InputDecoration(
+                  prefixIcon: Icon(Icons.lock,color:Colors.deepPurple[900]),
                  labelText: Constant.otpPlaceholder,
                  labelStyle: TextStyle(
                    fontFamily:'Montserrat',
                    fontWeight:FontWeight.bold,
                    color:Colors.grey,
                  ),
-                 focusedBorder: UnderlineInputBorder(borderSide:BorderSide(color:Colors.deepPurple[900]) )
+                 focusedBorder: OutlineInputBorder(borderSide:BorderSide(color:Colors.deepPurple[900]) )
                 )
               ),
               SizedBox(height:40.0,),
@@ -307,29 +308,6 @@ Widget otpField(context){
                   ),)
                )
                ),
-              SizedBox(height:20.0,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-               children: <Widget>[
-                 Text(
-                   Constant.goBackLabel,
-                   style: TextStyle(
-                     fontWeight: FontWeight.bold, 
-                     fontFamily:'Montserrat'
-                   ),
-                 ),
-                 SizedBox(width:5.0,),
-                 InkWell(
-                onTap:()=>Navigator.of(context).pushNamed('/'),
-                child:Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(Constant.loginLabel,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Montserrat', color: Colors.deepPurple[900])),
-                    
-                  ),
-              ),
-               ],
-              ),
             ],
           ),
         );
@@ -341,7 +319,7 @@ Widget phoneAuthLabel(){
           child:Stack(
             children: <Widget>[
              Container(
-              padding: EdgeInsets.fromLTRB(15.0,110.0,0.0,0.0),
+              padding: EdgeInsets.fromLTRB(15.0,60.0,0.0,0.0),
               child: Text(
                 'Phone Number',
                 style:TextStyle(
@@ -349,7 +327,7 @@ Widget phoneAuthLabel(){
                 ),
               ),
               Container(
-              padding: EdgeInsets.fromLTRB(15.0,175.0,0.0,0.0),
+              padding: EdgeInsets.fromLTRB(15.0,125.0,0.0,0.0),
               child: Text(
                 'Verification',
                 style:TextStyle(
@@ -357,7 +335,7 @@ Widget phoneAuthLabel(){
                 ),
               ),
               Container(
-              padding: EdgeInsets.fromLTRB(210.0,50.0,0.0,0.0),
+              padding: EdgeInsets.fromLTRB(210.0,0.0,0.0,0.0),
               child: Text(
                 '.',
                 style:TextStyle(
@@ -410,7 +388,7 @@ Widget otpLabel(){
           child:Stack(
             children: <Widget>[
              Container(
-              padding: EdgeInsets.fromLTRB(15.0,110.0,0.0,0.0),
+              padding: EdgeInsets.fromLTRB(15.0,60.0,0.0,0.0),
               child: Text(
                 'OTP',
                 style:TextStyle(
@@ -418,7 +396,7 @@ Widget otpLabel(){
                 ),
               ),
               Container(
-              padding: EdgeInsets.fromLTRB(15.0,175.0,0.0,0.0),
+              padding: EdgeInsets.fromLTRB(15.0,125.0,0.0,0.0),
               child: Text(
                 'Verification',
                 style:TextStyle(
@@ -426,7 +404,7 @@ Widget otpLabel(){
                 ),
               ),
               Container(
-              padding: EdgeInsets.fromLTRB(26.0,76.0,0.0,0.0),
+              padding: EdgeInsets.fromLTRB(26.0,26.0,0.0,0.0),
               child: Text(
                 '.',
                 style:TextStyle(
@@ -480,7 +458,7 @@ Widget authAppBarField(context,String title){
 
 Widget phoneAuthField(context){
   return  Container(
-          padding: EdgeInsets.only(top:35,left:20.0,right:20.0),
+          //padding: EdgeInsets.only(top:35,left:20.0,right:20.0),
           child: Column(
             children:<Widget>[
               TextFormField(
@@ -520,29 +498,7 @@ Widget phoneAuthField(context){
                   ),)
                )
                ),
-              SizedBox(height:20.0,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-               children: <Widget>[
-                 Text(
-                   Constant.goBackLabel,
-                   style: TextStyle(
-                     fontWeight: FontWeight.bold, 
-                     fontFamily:'Montserrat'
-                   ),
-                 ),
-                 SizedBox(width:5.0,),
-                 InkWell(
-                onTap:()=>Navigator.of(context).pushNamed('/'),
-                child:Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(Constant.loginLabel,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Montserrat', color: Colors.deepPurple[900])),
-                    
-                  ),
-              ),
-               ],
-              ),
+
             ],
           ),
         );

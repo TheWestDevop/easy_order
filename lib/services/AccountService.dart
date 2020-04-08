@@ -3,7 +3,7 @@ import 'package:easy_order/shared/shared.dart';
 
 class AccountService {
   
-API api;
+API _api;
 
 Future<Map<String,dynamic>> updateProfile(){
   

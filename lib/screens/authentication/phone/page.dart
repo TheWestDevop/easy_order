@@ -14,7 +14,6 @@ class PageState extends State<Phone_Page> {
      body: Column(
        crossAxisAlignment: CrossAxisAlignment.stretch,
        children:<Widget>[
-        //SizedBox(height:70.0,),
         phoneAuthLabel(),
         SizedBox(height:40.0,),
         Padding(

@@ -27,7 +27,7 @@ class AppViewModel extends Model {
 
   AppViewModel(){
     this.getState();
-      setStatus(_status);
+    //setStatus(_status);
   }
 
 

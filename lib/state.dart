@@ -25,12 +25,20 @@ class _MainViewState extends State<MainViewState> {
   
    @override
    void initState() { 
+     
      appViewModel = locator<AppViewModel>();
-     appState = appViewModel.state.listen((state)=>{
+     locator<CartViewModel>().fetchCartList();
+     locator<AuthViewModel>().fetchLocalProfile();
+     locator<KitchenViewModel>().removeKitchens();
+     locator<KitchenViewModel>().insertKitchenToLocal();
+     //locator<KitchenViewModel>().fetchKitchen();
+    locator<ChefViewModel>().removeChefs();
+    locator<ChefViewModel>().insertChefToLocal();
+    locator<ChefViewModel>().fetchChef();
+     setState(() {
+       appState = appViewModel.state.listen((state)=>{
        viewState = state
      });
-     setState(() {
-       
      });
      super.initState();
      
