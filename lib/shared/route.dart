@@ -27,9 +27,11 @@ class RouteGenerator {
       return MaterialPageRoute(builder:(_) => Products());
        break;
        case '/detail':
-       final product = settings.arguments;
-        if (product is Product) {
-          return MaterialPageRoute(builder:(_) => Details(detail:product));
+       final details = settings.arguments;
+        if (details is Product) {
+          return MaterialPageRoute(builder:(_) => Details(detail:details));
+        }else if(details is Kitchen){
+          return MaterialPageRoute(builder:(_) => Kitchen_Details(detail:details));
         } else {
         return MaterialPageRoute(builder:(_) => Error());
         }

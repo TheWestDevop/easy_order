@@ -1,5 +1,6 @@
 
 
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:easy_order/models/profile.dart';
@@ -16,22 +17,17 @@ class AuthViewModel extends Model {
   AuthService _authService = locator<AuthService>();
   ProductViewModel _productViewModel = locator<ProductViewModel>();
   AppViewModel _appViewModel = locator<AppViewModel>();
-  String cartMessage = "";
+  Preference _userpreference = locator<Preference>();
+ // String _cartMessage = "";
   final LocalStorage storage = new LocalStorage('app_data');
-  bool success = false;
-  Directory tempDir;
-  String tempPath;
+  
   List<Profile> _profile =[];
-  Preference userpreference = locator<Preference>();
-  Future isUserLogged;
 
-//Database _db;
-  String _message;
+
   AppState  _status;
 
   AppState get status => _status;
 
-  String  get message => _message;
   
 
   AuthViewModel(){
@@ -86,7 +82,8 @@ void setStatus(AppState state) {
       }
     });
   }
-
+ 
+  
 
 Profile get userProfile => _profile[0];
 
@@ -103,14 +100,16 @@ Profile get userProfile => _profile[0];
  }
 
 Future  loginUser(context,String email,String password) async {
-     SharedPreferences prefs = await SharedPreferences.getInstance();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     _appViewModel.setStatus(AppState.Busy);
        final response =  _authService.login(email,password);
        if (response['status']){
           Profile _profile = Profile.fromJson(response['profile']);
           this.updateProfileToLocal(_profile);
           this.fetchLocalProfile();
+          prefs.setInt('UID', _profile.id);
           prefs.setBool('userloggedIn', true);
+         // prefs.setString("user",json.encode(_profile));
           _appViewModel.setStatus(AppState.Authenticated);
           ToastOn("Welcome Back ${_profile.name}.", Colors.greenAccent[400],Colors.white, 20.0);
           notifyListeners();
@@ -136,7 +135,7 @@ Future  loginUser(context,String email,String password) async {
  removePreference() async {
    SharedPreferences prefs = await SharedPreferences.getInstance();
    prefs.setBool('userloggedIn',false);
-   //prefs.setInt('userId',1);
+   prefs.setInt('UID',null);
   }
 
 }

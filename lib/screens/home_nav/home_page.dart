@@ -3,9 +3,12 @@ part of 'home.dart';
 
 class HomePage extends StatefulWidget {
 
+HomePage();
 
-  @override
+   @override
   _HomePageState createState() => _HomePageState();
+
+  
 }
 
 class _HomePageState extends State<HomePage> {  
@@ -13,13 +16,15 @@ class _HomePageState extends State<HomePage> {
   
   int _currentIndex = 2;
   final List<Widget> _children = [ 
-   Orders(), 
+   //Orders(), 
    Kitchens(),
    Products(),
+   HomeScreen(),
    Chefs(),
    Chat() // create the pages you want to navigate between
   ];
-
+  
+ 
   @override
   Widget build(BuildContext context) {
    return new Scaffold(
@@ -30,8 +35,9 @@ class _HomePageState extends State<HomePage> {
                     backgroundColor:Colors.white,
                     buttonBackgroundColor:Colors.deepPurple[900],
                 items:<Widget>[
-                  Icon(Icons.local_mall,color:Colors.white,),
+                  //Icon(Icons.local_mall,color:Colors.white,),
                   Icon(Icons.kitchen,color:Colors.white,),
+                  Icon(Icons.shopping_cart,color:Colors.white,),
                   Icon(Icons.home,color:Colors.white,),
                   Icon(Icons.people,color:Colors.white,),
                   Icon(Icons.question_answer,color:Colors.white,),

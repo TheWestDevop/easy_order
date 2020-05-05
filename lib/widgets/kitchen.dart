@@ -54,7 +54,7 @@ Widget kitchensGrid(List<Kitchen> data,aspectRadtio){
           return Padding(
               padding: EdgeInsets.all(5.0),
               child: GestureDetector(
-                onTap: ()=>Navigator.of(context).pushNamed('/kitchen/detail',arguments:data[index]),
+                onTap: ()=>Navigator.of(context).pushNamed('/detail',arguments:data[index]),
                   //print("Product Click Data :-${product.title}");
                 child: Container(
                     height: 350.0,
@@ -127,47 +127,7 @@ Widget kitchensGrid(List<Kitchen> data,aspectRadtio){
     );
 }
 
-Widget kitchenDetailsBottomNavigation(KitchenViewModel viewModel,Function showCartSnak){
-  return Container(
-              margin: EdgeInsets.only(bottom: 18.0),
-              height: 60.0,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border(
-                      top: BorderSide(color: Colors.grey[300],width: 1.0)
-                  )
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Container(
-                    child: Row(
-                      children: <Widget>[
-                        Container(
-                          width: 60.0,
-                          child: Text("Amount",style: TextStyle(fontSize: 12.0,color: Colors.grey),),
-                        ),
-                        Text("\#500",style: TextStyle(fontSize: 25.0,fontWeight: FontWeight.w600,color: Colors.deepPurple[900])),
-                      ],
-                    ),
-                  ),
-                  
-                RaisedButton(
-                        color: Colors.deepOrange,
-                        onPressed: (){
-                          // viewModel.addCart(item);
-                          // Timer(Duration(milliseconds: 500), (){
-                          //   showCartSnak(viewModel.cartMessage,viewModel.success);
-                          // });
-                        },
-                        child: Text("Book",style: TextStyle(color: Colors.white),),
-                      )
-            
-                  
-                ],
-              )
-          );
-}
+
 
 
 

@@ -3,18 +3,22 @@ import 'package:easy_order/screens/screen.dart';
 import 'package:easy_order/shared/shared.dart';
 import 'package:easy_order/state.dart';
 import 'package:easy_order/viewModel/viewModel.dart';
-import 'package:easy_order/widgets/widget.dart';
 import 'package:flare_splash_screen/flare_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  deleteCache();
   setupLocator();
   runApp(MyApp());
 }
 
+deleteCache() async{
+     final manager = new DefaultCacheManager();
+     manager.emptyCache();
+   }
 
 class MyApp extends StatefulWidget {
   @override
@@ -73,7 +77,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
  Preference userpreference;
-
+ 
  @override
    void initState() { 
      userpreference = locator<Preference>();
@@ -104,6 +108,9 @@ class _MainScreenState extends State<MainScreen> {
                       }
              });
   }
+
+
+   
 }
 
 

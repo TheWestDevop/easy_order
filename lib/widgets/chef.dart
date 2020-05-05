@@ -13,7 +13,7 @@ Widget chefTable(context,List<Chef> chef,Function chefSearch){
     final double itemWidth = size.width / 2;
   return new Column(
         children: <Widget>[
-          searchKitchenField(chefSearch),
+          searchChefField(chefSearch),
           new Expanded(
             child: chefsGrid(chef,(itemWidth / itemHeight))
         )
@@ -82,7 +82,7 @@ Widget chefsGrid(List<Chef> data,aspectRadtio){
                                     child: CircleAvatar(
                                       //child:,
                                       backgroundImage: NetworkImage(data[index].image),
-                                      radius:200/4,),
+                                      radius:100/6,),
                                   ),
                                 ),
                                 SizedBox(width:10.0,),

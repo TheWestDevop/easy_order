@@ -4,7 +4,7 @@ class Constant {
   static const String API_URL = 'https://smorcash.herokuapp.com/api/';
 
 
-  static const String homelabel = "Home";
+  static const String homelabel = " Home   ";
   static const String namePlaceholder = "Full Name";
   static const String phonePlaceholder = "Phone Number";
   static const String emailPlaceholder = "Email";
@@ -29,16 +29,17 @@ class Constant {
   static const String verificationLabel = "Verification Order";
   static const String placeOrderBtn = "Place Order Now";
   static const String orderListPlaceholder = "Orders List";
-  static const String avaliableProduct = "Market";
+  static const String avaliableProduct = " Market ";
   static const String productDetail = "Product Detail";
+  static const String kitchenDetail = "Kitchen Detail";
   static const String cartItem = "Cart Items";
   static const String searchPlaceholder = "Search Product";
   static const String searchKitchenPlaceholder = "Search Kitchen";
   static const String searchChefPlaceholder = "Search Chef";
   static const String checkoutLabel = "Check Out";
   static const String verifyOTPLabel = "Verify";
-  static const String kitchenLabel = "Kitchens";
-  static const String chefLabel = "Chefs";
+  static const String kitchenLabel = "Kitchens ";
+  static const String chefLabel = " Chefs   ";
   static const String chatLabel = "Messanger";
   static const String profileLabel = "Profile";
 

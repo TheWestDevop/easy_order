@@ -13,7 +13,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
 
-   AuthViewModel account =  locator<AuthViewModel>();
+   AccountViewModel account =  locator<AccountViewModel>();
 
    return new Scaffold(
               resizeToAvoidBottomPadding: false,
@@ -29,11 +29,11 @@ class _ProfilePageState extends State<ProfilePage> {
                     child: Column(
                         children:<Widget>[
                           //SizedBox(height:50.0,),
-                          profilePicture(account.userProfile.avatar),
+                          profilePicture(account.profile.avatar),
                           
                           Padding(
                             padding: const EdgeInsets.all(20.0),
-                            child: profileDetails(context,account.userProfile),
+                            child: profileDetails(context,account.profile),
                             )
                          
                          ],

@@ -8,7 +8,8 @@ class ProductView extends StatefulWidget {
 }
 
 class _ProductViewState extends State<ProductView> {  
-   final profile = locator<AccountViewModel>();
+
+   final account =  locator<AuthViewModel>();
    final product = locator<ProductViewModel>();
    var items = List<Product>();
 
@@ -30,7 +31,7 @@ class _ProductViewState extends State<ProductView> {
           builder: (context,child,model){
             return Scaffold(
                 resizeToAvoidBottomPadding: false,
-                appBar: homebar(context,Constant.avaliableProduct,profile.profile_image),
+                appBar: homebar(context,Constant.avaliableProduct,account.userProfile.avatar),
                 body: productTable(context,items,filterSearchResults),
                 //bottomNavigationBar:bottomNavBar(context,0),
        );

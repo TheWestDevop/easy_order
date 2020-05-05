@@ -3,6 +3,7 @@ import 'package:easy_order/shared/shared.dart';
 import 'package:easy_order/viewModel/viewModel.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 
 import 'package:scoped_model/scoped_model.dart';
 
@@ -77,10 +78,32 @@ Widget homebar(context,String title,String image){
                                   ),
                                 ),
                   Text(title,style: TextStyle(fontSize: 30,fontWeight:FontWeight.bold,color: Colors.deepPurple[900]),),
+                    Stack(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.fromLTRB(0.0,0,0.0,0),
+                child: GestureDetector(
+                                onTap:()=> Navigator.of(context).pushNamed('/cart'), //:  null,
+                                  child: Center(
+                                    child:Icon(Icons.notifications,size: 40,color: Colors.deepPurple[900],),
+                                  ),
+                                )
+              ),
+              Positioned(
+                child: ScopedModelDescendant<CartViewModel>(
+                builder: (context,child,model){
+                    return Container(
+                      child: Text(/*(*model.cartListing.length > 0) ? model.cartListing.length.toString() : ""*/ '1',textAlign: TextAlign.center,style: TextStyle(fontSize: 20,color: Colors.pink,fontWeight: FontWeight.w900),),
+                    );
+                  },
+                ),
+                ),
+               ],
+              ),
                   Stack(
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.all(10.0),
+                padding: EdgeInsets.fromLTRB(0.0,0,0.0,0),
                 child: GestureDetector(
                                 onTap:()=> Navigator.of(context).pushNamed('/cart'), //:  null,
                                   child: Center(
@@ -145,9 +168,9 @@ Widget appBarField(context,String title){
               Padding(
                 padding: EdgeInsets.all(10.0),
                 child: GestureDetector(
-                                onTap:()=> Navigator.of(context).pushNamed('/cart'), //:  null,
+                                onTap:()=> {},//Navigator.of(context).pushNamed('/cart'), //:  null,
                                   child: Center(
-                                    child:Icon(Icons.shopping_cart,size: 40,color: Colors.deepPurple[900],),
+                                    child:Icon(Icons.shopping_cart,size: 40,color: Colors.transparent,),
                                   ),
                                 )
               ),
@@ -155,7 +178,7 @@ Widget appBarField(context,String title){
                 child: ScopedModelDescendant<CartViewModel>(
                 builder: (context,child,model){
                     return Container(
-                      child: Text((model.cartListing.length > 0) ? model.cartListing.length.toString() : "",textAlign: TextAlign.center,style: TextStyle(fontSize: 20,color: Colors.pink,fontWeight: FontWeight.w900),),
+                      child: Text((model.cartListing.length > 0) ? model.cartListing.length.toString() : "",textAlign: TextAlign.center,style: TextStyle(fontSize: 20,color: Colors.transparent,fontWeight: FontWeight.w900),),
                     );
                   },
                 ),
@@ -200,6 +223,16 @@ Widget nextBtn(context,String route,){
 }
 
 
+ formatMoney(double price){
+   FlutterMoneyFormatter fmf = FlutterMoneyFormatter(
+    amount: price,
+    settings: MoneyFormatterSettings(
+        symbol: 'NGN',
+        //fractionDigits: 3,
+        )
+);
+return fmf.output.symbolOnRight;
+}
 
 
 

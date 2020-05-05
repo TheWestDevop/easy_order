@@ -11,7 +11,9 @@ import 'package:flutter/widgets.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class MainViewState extends StatefulWidget {
-  MainViewState({Key key}) : super(key: key);
+
+ 
+
 
   @override
   _MainViewState createState() => _MainViewState();
@@ -22,19 +24,13 @@ class _MainViewState extends State<MainViewState> {
   AppViewModel appViewModel; 
   StreamSubscription<AppState> appState;
   AppState viewState;
+  int uid;
+
+   
   
    @override
    void initState() { 
-     
      appViewModel = locator<AppViewModel>();
-     locator<CartViewModel>().fetchCartList();
-     locator<AuthViewModel>().fetchLocalProfile();
-     locator<KitchenViewModel>().removeKitchens();
-     locator<KitchenViewModel>().insertKitchenToLocal();
-     //locator<KitchenViewModel>().fetchKitchen();
-    locator<ChefViewModel>().removeChefs();
-    locator<ChefViewModel>().insertChefToLocal();
-    locator<ChefViewModel>().fetchChef();
      setState(() {
        appState = appViewModel.state.listen((state)=>{
        viewState = state
@@ -73,4 +69,6 @@ Widget getUI(AppState state){
     }
 
 }
+
+
 

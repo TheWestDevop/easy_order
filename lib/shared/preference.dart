@@ -1,5 +1,7 @@
 
 
+import 'dart:convert';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Preference {
@@ -15,6 +17,11 @@ class Preference {
    return _userId;
    }
 
+   Future<Map<String,dynamic>> get user async { 
+   SharedPreferences prefs = await SharedPreferences.getInstance();
+   String _user =  prefs.getString('user_id') ?? null;
+   return json.decode(_user);
+   }
 
 
 

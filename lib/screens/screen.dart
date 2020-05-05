@@ -1,3 +1,4 @@
+export './home_nav/home.dart';
 export './home/home.dart';
 export './error/error.dart';
 export './order/order.dart';
@@ -14,3 +15,4 @@ export './chat/chat.dart';
 export './chef/chef.dart';
 export './kitchen/kitchen.dart';
 export './profile/profile.dart';
+export './kitchen_details/kitchen.dart';

@@ -41,7 +41,7 @@ validatePhoneField(String value){
    }
 }
 validatePasswordField(String value){
-   if (value.isEmpty || value == null) {
+   if (value.isEmpty || value == null || value.length < 7) {
      return "Invalid Password";
    } else {
      return null;

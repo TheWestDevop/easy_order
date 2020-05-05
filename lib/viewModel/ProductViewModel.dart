@@ -57,8 +57,8 @@ class ProductViewModel extends Model {
       String path = join(documentsDirectory.path, 'smor_product.db');
 
       print(path);
-      await storage.deleteItem("isFirst");
-      await this.deleteDB();
+      //await storage.deleteItem("isFirst");
+      //await this.deleteDB();
 
      var database = await openDatabase(path, version: 1, onOpen: (Database db) {
         this.db = db;
