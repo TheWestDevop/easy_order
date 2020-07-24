@@ -15,10 +15,14 @@ part 'page.dart';
 class Details extends StatelessWidget {
    Product detail;
    Details({@required this.detail});
+  final cartViewModel = locator<CartViewModel>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: DetailsPage(detail:detail),
+      body: ScopedModel<CartViewModel>(
+      model:cartViewModel,
+      child:DetailsPage(detail:detail)),
     );
   }  
 }

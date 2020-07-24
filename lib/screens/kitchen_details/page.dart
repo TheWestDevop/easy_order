@@ -53,7 +53,7 @@ class KitchenDetailsPageState extends State<KitchenDetailsPage>{
       child: Scaffold(
           key: _scaffoldKey,
           backgroundColor: Colors.white,
-          appBar: appBarField(context,Constant.kitchenDetail),
+          appBar: pageAppBar(context,Constant.kitchenDetail),
           body:Container(
             decoration: BoxDecoration(
                 border: Border(
@@ -118,8 +118,8 @@ class KitchenDetailsPageState extends State<KitchenDetailsPage>{
                                                                 GestureDetector(
                                                                     onTap: (){
                                                                       print(widget.detail);
-                                                                      model.addToFav(widget.detail);
-                                                                      showSnak(widget.detail.fav,widget.detail.title);
+                                                                      // model.addToFav(widget.detail);
+                                                                      // showSnak(widget.detail.fav,widget.detail.title);
                                                                     },
                                                                     child: widget.detail.fav ? Icon(Icons.favorite,size: 20.0,color: Colors.red,) : Icon(Icons.favorite_border,size: 20.0,),
                                                                   )

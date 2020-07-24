@@ -8,14 +8,16 @@ class ChefsPage extends StatefulWidget {
 }
 
 class _ChefsPageState extends State<ChefsPage> {  
-AuthViewModel account =  locator<AuthViewModel>();
+  AuthViewModel account =  locator<AuthViewModel>();
   ChefViewModel chef =  locator<ChefViewModel>();
+  ChefService chefsService = locator<ChefService>();
+
   var items = List<Chef>();
 
    @override
    void initState() { 
      //locator<ChefViewModel>().fetchChef();
-     items.addAll(chef.itemListing);
+     items.addAll(chefsService.getChefs());
      super.initState();
      
    }
@@ -27,7 +29,7 @@ AuthViewModel account =  locator<AuthViewModel>();
           builder: (context,child,model){
             return Scaffold(
                 resizeToAvoidBottomPadding: false,
-                appBar: homebar(context,Constant.chefLabel,account.userProfile.avatar),
+               // appBar: homebar(context,Constant.chefLabel),
                 body: chefTable(context,items,filterSearchResults),
                 //bottomNavigationBar:bottomNavBar(context,0),
        );
@@ -36,7 +38,7 @@ AuthViewModel account =  locator<AuthViewModel>();
 }
 
 void filterSearchResults(String query) {
-  List<Chef> chefSearchList = chef.itemListing;
+  List<Chef> chefSearchList = chefsService.getChefs();
   if(query.isNotEmpty) {
     List<Chef> searchedListData = List<Chef>();
 
@@ -54,7 +56,7 @@ void filterSearchResults(String query) {
   } else {
     setState(() {
       items.clear();
-      items.addAll(chef.itemListing);
+      items.addAll(chefsService.getChefs());
     });
   }
 }

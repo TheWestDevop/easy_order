@@ -51,7 +51,7 @@ class DetailsPageState extends State<DetailsPage>{
       child: Scaffold(
           key: _scaffoldKey,
           backgroundColor: Colors.white,
-          appBar: appBarField(context,Constant.productDetail),
+          appBar: pageAppBar(context,Constant.productDetail),
           body:Container(
             decoration: BoxDecoration(
                 border: Border(
@@ -134,10 +134,10 @@ class DetailsPageState extends State<DetailsPage>{
                                                   child: Column(
                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                     children: <Widget>[
-                                                      Text(widget.detail.title,style: TextStyle(fontWeight: FontWeight.w500,fontSize: 19.0,color: Colors.deepPurple[900])),
+                                                      Text(widget.detail.title,style: TextStyle(fontWeight: FontWeight.w500,fontSize: 19.0,color: Colors.green[900])),
                                                       Padding(
                                                         padding: EdgeInsets.only(top: 10.0),
-                                                        child: Text(widget.detail.description,style: TextStyle(fontWeight: FontWeight.w500,fontSize: 19.0,color: Colors.deepPurple[900])),
+                                                        child: Text(widget.detail.description,style: TextStyle(fontWeight: FontWeight.w500,fontSize: 15.0,color: Colors.green[900])),
                                                       )
                                                     ],
                                                   ),

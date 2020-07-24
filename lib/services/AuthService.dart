@@ -1,47 +1,21 @@
-
-import 'package:easy_order/models/profile.dart';
 import 'package:easy_order/shared/shared.dart';
 
 class AuthService {
-  
-API _api;
+  API api = new API();
 
-Map<String,dynamic> login(String email,String password){
- var user_data = {
-   'status':true,
-   'profile':{
-     'id':1,
-     'name':"oyeniyi adedayo",
-     'image':'https://picsum.photos/200/300',
-     'phone':'+2348143412400',
-     'email':'oyeniyiAdedayo@gmail.com',
-     'address':'Osara close, Maitama Wuse 2 Abuja',
-    
-   }
-};
-   return user_data;
-}
+  dynamic login(String email, String password) async {
+    var data = {
+      "email":email, 
+      "password":password,
+      "app":"user"};
+    var response = await api.Post("${Constant.USER_API_URL}/auth", data);
+    // print(" auth response --> $response");
+    return response;
+  }
 
-Future<Map<String,dynamic>> register(){
-  
-  
-}
+  Future<Map<String, dynamic>> register() {}
 
+  Future<String> phoneAuth() {}
 
-
-Future<String> phoneAuth(){
-  
-  
-}
-
-Future<Map<String,dynamic>> passwordRecovery(){
-  
-  
-}
-
-
-
-
-
-
+  Future<Map<String, dynamic>> passwordRecovery() {}
 }

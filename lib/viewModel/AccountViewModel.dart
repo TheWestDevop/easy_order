@@ -1,5 +1,3 @@
-
-
 import 'dart:io';
 
 import 'package:easy_order/models/models.dart';
@@ -10,50 +8,39 @@ import 'package:easy_order/viewModel/viewModel.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class AccountViewModel extends Model {
+  AccountService _accountService = locator<AccountService>();
+  AppViewModel _appViewModel = locator<AppViewModel>();
+  Profile _profile;
 
-AccountService _accountService = locator<AccountService>();
-AppViewModel _appViewModel = locator<AppViewModel>();
-List<Profile> _profile =[];
+  updateProfile() {}
 
+  uploadPicture() {}
 
-updateProfile(){
-
- }
-
- uploadPicture(){
-
- }
-
-
- AccountViewModel(){
-   
-
-   this.getProfile();
- }
-
- getProfile() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    _appViewModel.setStatus(AppState.Busy);
-     int uid = prefs.getInt('UID');
-
-     if (uid == null) {
-       _appViewModel.setStatus(AppState.UnAuthenticated);
-     } else {
-      final response =  _accountService.getUserProfile(uid);
-     Profile profile = new Profile.fromJson(response['profile']);
-     _profile.clear();
-     _profile.add(profile);
-        _appViewModel.setStatus(AppState.Authenticated);
-     print("user from account model :- $_profile");
-     }
-     
-
+  AccountViewModel() {
+    getCacheProfile();
   }
 
-  get profile => _profile[0];
+  getProfile() async {
+    int uid = await Preference.getInt("UID");
 
+    if (uid == null) {
+      _appViewModel.setStatus(AppState.UnAuthenticated);
+    } else {
+      final response = _accountService.getUserProfile(uid);
+      _profile = new Profile.fromJson(response['profile']);
+      _appViewModel.setStatus(AppState.Authenticated);
+    }
+  }
 
+  getCacheProfile() async {
+
+     var data = await locator<Preference>().userProfile;
+    _profile = Profile.fromJson(data);
+
+    //print("user profile --> ${_profile.name}");
    
+  }
+
+  Profile get profile => _profile;
 }

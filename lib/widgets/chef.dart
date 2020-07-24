@@ -51,7 +51,7 @@ Widget chefsGrid(List<Chef> data,aspectRadtio){
           return Padding(
               padding: EdgeInsets.all(5.0),
               child: GestureDetector(
-                onTap: ()=>Navigator.of(context).pushNamed('/kitchen/detail',arguments:data[index]),
+                onTap: null,//()=>Navigator.of(context).pushNamed('/kitchen/detail',arguments:data[index]),
                   //print("Product Click Data :-${product.title}");
                 child: Container(
                     height: 350.0,

@@ -16,17 +16,18 @@ class Product {
       title = data['title'] ?? '',
       image= data['image'] ?? '',
       description = data['description'] ?? '',
-      quantity = data['quantity'] ?? '',
+      quantity = data['quantity'] ?? '1',
       price =  data['price'] ?? '',
       fav=  data['fav'] == 1 ? true : false ?? '',
       rating=  data['rating'] ?? '';
 
    Product.map(dynamic data) 
-     : id = data.id ?? '',
+     : 
+      id = data.id ?? '',
       title = data.title ?? '',
       image= data.image ?? '',
       description = data.description ?? '',
-      quantity = data.quantity ?? '',
+      quantity = data.quantity ?? '1',
       price =  data.price ?? '',
       fav=  data.fav == 1 ? true : false ?? '',
       rating=  data.rating ?? '';

@@ -19,7 +19,7 @@ List<Product> getProducts() {
                       "image":"https://source.unsplash.com/user/erondu/1600x1000",
                       "description":"Food Item from Easy Order",
                       "title":'Rice',
-                      "quantity":'1 cup',
+                      "quantity":"1",
                       "price":350.0,
                       "rating":4.5,
                       "fav":true
@@ -29,7 +29,7 @@ List<Product> getProducts() {
                       "image":"https://source.unsplash.com/user/jackie/1600x1000",
                       "description":"Food Item from Easy Order",
                       "title":'Beans',
-                      "quantity":'1 cup',
+                      "quantity":"1",
                       "price":250.0,
                       "rating":4.5,
                       "fav":true
@@ -39,7 +39,7 @@ List<Product> getProducts() {
                       "image":"https://source.unsplash.com/user/jnnfrchn/1600x1000",
                       "description":"Food Item from Easy Order",
                       "title":'Maize',
-                      "quantity":'1 cup',
+                      "quantity":"1",
                       "price":350.0,
                       "rating":4.5,
                       "fav":true
@@ -49,7 +49,7 @@ List<Product> getProducts() {
                       "image":"https://source.unsplash.com/user/lefterisk/1600x1000",
                       "description":"Food Item from Easy Order",
                       "title":'Yam',
-                      "quantity":'2 tuber',
+                      "quantity":'1',
                       "price":700.0,
                       "rating":4.5,
                       "fav":true
@@ -59,7 +59,7 @@ List<Product> getProducts() {
                       "image":"https://source.unsplash.com/user/saracervera/1600x1000",
                       "description":"Food Item from Easy Order",
                       "title":'Potato',
-                      "quantity":'2 tuber',
+                      "quantity":'1',
                       "price":350.0,
                       "rating":4.5,
                       "fav":true
@@ -69,7 +69,7 @@ List<Product> getProducts() {
                       "image":"https://source.unsplash.com/user/naveed28/1600x1000",
                       "description":"Food Item from Easy Order",
                       "title":'Chicken',
-                      "quantity":'1kilo',
+                      "quantity":"1",
                       "price":350.0,
                       "rating":4.5,
                       "fav":true
@@ -79,47 +79,47 @@ List<Product> getProducts() {
                       "image":"https://source.unsplash.com/user/fryfamilyfoodco/1600x1000",
                       "description":"Food Item from Easy Order",
                       "title":'Fish',
-                      "quantity":'1kilo',
+                      "quantity":"1",
                       "price":350.0,
                       "rating":4.5,
                       "fav":true
                     },
                     {
                       "id":8,
-                      "image":"https://source.unsplash.com/user/likemeat/1600x1000",
+                      "image":"https://source.unsplash.com/user/fryfamilyfoodco/1600x1000",
                       "description":"Food Item from Easy Order",
                       "title":'Beef',
-                      "quantity":'1kilo',
+                      "quantity":"1",
                       "price":350.0,
                       "rating":4.5,
                       "fav":true
                     },
                     {
                       "id":9,
-                      "image":"https://source.unsplash.com/user/yogidan2012/1600x1000",
+                      "image":"https://source.unsplash.com/user/fryfamilyfoodco/1600x1000",
                       "description":"Food Item from Easy Order",
                       "title":'Garri',
-                      "quantity":'1 cup',
+                      "quantity":"1",
                       "price":350.0,
                       "rating":4.5,
                       "fav":true
                     },
                     {
                       "id":10,
-                      "image":"https://source.unsplash.com/user/louishansel/1600x1000",
+                      "image":"https://source.unsplash.com/user/fryfamilyfoodco/1600x1000",
                       "description":"Food Item from Easy Order",
                       "title":'Tomato',
-                      "quantity":'1 set',
+                      "quantity":"1",
                       "price":350.0,
                       "rating":4.5,
                       "fav":true
                     },
                     {
                       "id":11,
-                      "image":"https://source.unsplash.com/user/kul_kultida/1600x1000",
+                      "image":"https://source.unsplash.com/user/fryfamilyfoodco/1600x1000",
                       "description":"Food Item from Easy Order",
                       "title":'Semo',
-                      "quantity":'1kg',
+                      "quantity":"1",
                       "price":1050.0,
                       "rating":4.5,
                       "fav":true
@@ -129,8 +129,11 @@ List<Product> getProducts() {
     return demo_product.map((data)=> Product.fromJson(data)).toList();
 }
 
+
+
+
 ProductService(){
-  //this.getProducts();
+  this.getProducts();
 }
 
 }

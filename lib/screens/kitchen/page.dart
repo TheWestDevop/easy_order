@@ -27,7 +27,7 @@ class _KitchenPageState extends State<KitchenPage> {
           builder: (context,child,model){
             return Scaffold(
                 resizeToAvoidBottomPadding: false,
-                appBar: homebar(context,Constant.kitchenLabel,account.userProfile.avatar),
+                // appBar: homebar(context,Constant.kitchenLabel),
                 body: kitchenTable(context,items,filterSearchResults),
                 //bottomNavigationBar:bottomNavBar(context,0),
        );

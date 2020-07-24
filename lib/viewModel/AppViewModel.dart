@@ -42,10 +42,10 @@ AppState getState() {
 
    userpreference.isUserLoggedIn.then((res) {
        if (res) {
-         print("Preferences :- $res ");
+         print("User LoggedIn Preferences :- $res ");
          this.setStatus(AppState.Authenticated);
        } else {
-         print("Preferences :- $res ");
+         print("User LoggedIn Preferences :- $res ");
          this.setStatus(AppState.UnAuthenticated);
        }
     }).catchError((e) {

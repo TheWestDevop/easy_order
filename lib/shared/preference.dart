@@ -1,28 +1,80 @@
-
-
-import 'dart:convert';
+import 'dart:async' show Future;
+import 'dart:convert' show json;
 
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Preference {
+  static Future<SharedPreferences> _prefs;
 
- Future<bool> get isUserLoggedIn async {
-   SharedPreferences prefs = await SharedPreferences.getInstance();
-   bool _isUserLoggedIn =  prefs.getBool('userloggedIn') ?? false;
-   return _isUserLoggedIn;
-   }
- Future<int> get userID async { 
-   SharedPreferences prefs = await SharedPreferences.getInstance();
-   int _userId =  prefs.getInt('user_id') ?? null;
-   return _userId;
-   }
+  static Future<SharedPreferences> _getInstance() {
+    _prefs ??= SharedPreferences.getInstance();
+    return _prefs;
+  }
 
-   Future<Map<String,dynamic>> get user async { 
-   SharedPreferences prefs = await SharedPreferences.getInstance();
-   String _user =  prefs.getString('user_id') ?? null;
-   return json.decode(_user);
-   }
+  static Future<bool> contains(String key) async {
+    return (await _getInstance()).containsKey(key);
+  }
+
+  static Future<bool> remove(String key) async {
+    return (await _getInstance()).remove(key);
+  }
+
+  static Future<String> getString(String key) async {
+    return (await _getInstance()).getString(key) ?? '';
+  }
+
+  static Future<String> setString(String key, String value) async {
+    await (await _getInstance()).setString(key, value);
+    return value;
+  }
+
+  static Future<Map<String, dynamic>> getMap(String key) async {
+    try {
+      final _map = await getString(key);
+      return _map.isEmpty ? null : json.decode(_map);
+    } catch (e) {
+      return null;
+    }
+  }
+  
+  static Future<Map<String, dynamic>> setMap(String key, Map<String, dynamic> value) async {
+    await setString(key, json.encode(value));
+    return value;
+  }
+
+  static Future<int> getInt(String key) async {
+    return (await _getInstance()).getInt(key);
+  }
 
 
+
+  static Future<int> setInt(String key, int value) async {
+    await (await _getInstance()).setInt(key, value);
+    return value;
+  }
+
+  static Future<bool> getBool(String key) async {
+    return (await _getInstance()).getBool(key);
+  }
+
+  static Future<bool> setBool(String key, bool value) async {
+    await (await _getInstance()).setBool(key, value);
+    return value;
+  }
+
+   Future<bool> get isUserLoggedIn async {
+    return (await _getInstance()).getBool('userloggedIn');
+  }
+
+  Future<Map<dynamic, dynamic>> get userProfile async {
+    try {
+      final _map = await getString("profile");
+      return _map.isEmpty ? null : json.decode(_map);
+    } catch (e) {
+      return null;
+    }
+  }
+
+         
 
 }

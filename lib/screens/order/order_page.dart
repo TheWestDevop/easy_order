@@ -13,12 +13,10 @@ class _OrderPageState extends State<OrderPage> {
   @override
   Widget build(BuildContext context) {
 
-   //final bloc = Provider.of<HomeBloc>(context);
-   AuthViewModel account =  locator<AuthViewModel>();
 
    return new Scaffold(
               resizeToAvoidBottomPadding: false,
-              appBar: homebar(context,Constant.orderListPlaceholder,account.userProfile.avatar),
+              // appBar: homebar(context,Constant.orderListPlaceholder),
               body: ListView(
               scrollDirection: Axis.vertical,
               children:<Widget>[ 

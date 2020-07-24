@@ -30,7 +30,7 @@ Widget searchKitchenField(Function kitchenSearch){
     child: TextFormField(
                               decoration:InputDecoration(
                               border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(25.0)),borderSide:BorderSide(color:Colors.deepPurple) ),
-                              prefixIcon: Icon(Icons.search,color:Colors.deepPurple[900]),
+                              prefixIcon: Icon(Icons.search,color:Colors.green[900]),
                               labelText: Constant.searchKitchenPlaceholder,
                               labelStyle: TextStyle(
                                 fontFamily:'Montserrat',
@@ -95,7 +95,7 @@ Widget kitchensGrid(List<Kitchen> data,aspectRadtio){
                         SizedBox(height: 10.0,),
                         Padding(
                           padding: EdgeInsets.only(left: 10.0),
-                          child: Text("${data[index].title}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15.0,color: Colors.deepPurple[900]),),
+                          child: Text("${data[index].title}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15.0,color: Colors.green[900]),),
                         ),
                         Padding(
                           padding: EdgeInsets.only(left: 10.0),

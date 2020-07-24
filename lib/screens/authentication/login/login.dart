@@ -15,11 +15,15 @@ import 'package:scoped_model/scoped_model.dart';
 part 'page.dart';
 
 class Login extends StatelessWidget {
+  final authtViewModel = locator<AuthViewModel>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: LoginForm(),
+      body: ScopedModel<AuthViewModel>(
+              model:authtViewModel,
+              child:LoginForm()
+              )
     );
   }  
 }

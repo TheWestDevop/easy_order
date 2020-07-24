@@ -16,3 +16,4 @@ export './chef/chef.dart';
 export './kitchen/kitchen.dart';
 export './profile/profile.dart';
 export './kitchen_details/kitchen.dart';
+export './search_product/search.dart';

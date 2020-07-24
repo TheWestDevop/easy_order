@@ -11,12 +11,9 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
-
-   AuthViewModel account =  locator<AuthViewModel>();
-
    return new Scaffold(
               resizeToAvoidBottomPadding: false,
-              appBar: homebar(context,Constant.chatLabel,account.userProfile.avatar),
+              // appBar: homebar(context,Constant.chatLabel),
               body: ListView(
               scrollDirection: Axis.vertical,
               children:<Widget>[ 

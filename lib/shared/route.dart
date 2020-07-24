@@ -9,7 +9,8 @@ class RouteGenerator {
    static Route<dynamic> generateRoute(RouteSettings settings){
     switch (settings.name) {
       case '/home':
-      return MaterialPageRoute(builder:(_) => Home());
+       Profile user = settings.arguments;
+      return MaterialPageRoute(builder:(_) => Home(user:user,));
       break;
       case '/orders':
       return MaterialPageRoute(builder:(_) => Orders());
@@ -25,7 +26,10 @@ class RouteGenerator {
       break;
       case '/products':
       return MaterialPageRoute(builder:(_) => Products());
-       break;
+      break;
+      case '/search':
+      return MaterialPageRoute(builder:(_) => Search_Product());
+      break;
        case '/detail':
        final details = settings.arguments;
         if (details is Product) {
@@ -43,13 +47,7 @@ class RouteGenerator {
        return MaterialPageRoute(builder:(_) => UserProfile());
       break;
       case '/login':
-       return MaterialPageRoute(builder:(_) =>Scaffold(
-         body:SplashScreen.navigate(
-        name: 'assets/icon/loader.flr',
-        next: (context) =>  Login(),
-        until: () => Future.delayed(Duration(seconds: 3)),
-        startAnimation: 'load',
-      )));
+       return MaterialPageRoute(builder:(_) => Login());
       break;
       case '/register':
        return MaterialPageRoute(builder:(_) => Register());

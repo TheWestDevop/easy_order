@@ -1,40 +1,39 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as connect;
 
 class API {
-
-  Future Post({url,data}) async {
+  
+  Future Post(url, data) async {
     
-    final response = await connect.post(url,body:data);
+    print("sending request to $url");
 
-    return Future.value(response);
+    final response = await connect.post(url, body: data);
+
+    return Future.value(json.decode(response.body));
   }
 
-  Future Get({url}) async {
-    
+  Future Get(url) async {
     final response = await connect.post(url);
 
-    return Future.value(response);
+    return Future.value(json.decode(response.body));
   }
 
-  Future Put({url,data}) async {
-    
-    final response = await connect.put(url,body:data);
+  Future Put(url, data) async {
+    final response = await connect.put(url, body: data);
 
-    return Future.value(response);
+    return Future.value(json.decode(response.body));
   }
 
-  Future Patch({url,data}) async {
-    
-    final response = await connect.patch(url,body:data);
+  Future Patch(url, data) async {
+    final response = await connect.patch(url, body: data);
 
-    return Future.value(response);
+    return Future.value(json.decode(response.body));
   }
 
-  Future Delete({url}) async {
-    
+  Future Delete(url) async {
     final response = await connect.delete(url);
 
-    return Future.value(response);
+    return Future.value(json.decode(response.body));
   }
-
 }

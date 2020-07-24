@@ -1,59 +1,46 @@
 
- import 'dart:io';
+ import 'dart:convert';
+import 'dart:io';
 
 class Order {
    
-   String  _note;
-   String  _name;
-   String  _phone;
-   String  _address;
-   String  _email;
-   String  _avatar;
-   String  _order;
-   int  _order_type;
+   String user_id;
+   String delivery_state;
+   String delivery_lga;
+   String delivery_address;
+   String delivery_at;
+   String total_cost;
+   String coupon;
+   List<dynamic> order;
+   int  order_type;
+
+
    
 
-  Order(this._name,this._email,this._phone,this._address,this._avatar,this._order,this._order_type,this._note);
-  
-  
-  String get profile_note => _note;
-  String get profile_name => _name;
-  String get profile_phone => _phone;
-  String get profile_address => _address;
-  String get profile_email => _email;
-  String get profile_avatar => _avatar;
-  String get profile_order => _order;
-  int get profile_order_type => _order_type;
-
- Order.fromJson(Map<String,dynamic> data)
-    : _note = data['note'] ?? '',
-      _name = data['name'] ?? '',
-      _phone = data['phone'] ?? '',
-      _address = data['address'] ?? '',
-      _email = data['email'] ?? '',
-      _avatar=  data['avatar'] ?? '',
-      _order=  data['store'] ?? '',
-      _order_type=  data['order_type'] ?? '';
-
- Order.map(dynamic data) 
-     : 
-      _name = data['name'] ?? '',
-      _phone = data['phone'] ?? '',
-      _address = data['address'] ?? '',
-      _email = data['email'] ?? '',
-      _avatar=  data['avatar'] ?? '',
-      _order=  data['store'] ?? '',
-      _order_type=  data['order_type'] ?? '';
+  Order(
+    { 
+      this.user_id,
+      this.delivery_state,
+      this.delivery_lga,
+      this.delivery_address,
+      this.delivery_at,
+      this.total_cost,
+      this.coupon,
+      this.order,
+      this.order_type
+      });
 
  Map<String,dynamic> toMap(){
    var map =  new Map<String,dynamic>();
-   map['name']= profile_name;
-   map['phone']= profile_phone;
-   map['address']= profile_address;
-   map['email']= profile_email;
-   map['avatar']= profile_avatar;
-   map['store']= profile_order;
-   map['order_type']=profile_order_type;
+   map['user_id']= user_id;
+   map['delivery_state']= delivery_state;
+   map['delivery_lga']= delivery_lga;
+   map['delivery_address']= delivery_address;
+   map['delivery_at']= delivery_at;
+   map['total_cost']= total_cost;
+   map['coupon']= coupon;
+   map['product_ordered']= json.encode(order);
+   map['order_type']=order_type;
       return map;
  }
 

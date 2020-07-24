@@ -1,8 +1,11 @@
+import 'package:flutter/material.dart';
+
 class Constant {
   Constant._();
-  
-  static const String API_URL = 'https://smorcash.herokuapp.com/api/';
 
+  static const String MARKET_API_URL = '"https://smor-market.herokuapp.com/api/v1/user"';
+  static const String USER_API_URL =
+      "https://smor-user.herokuapp.com/api/v1/user";
 
   static const String homelabel = " Home   ";
   static const String namePlaceholder = "Full Name";
@@ -26,7 +29,7 @@ class Constant {
   static const String otpPlaceholder = "OTP Code";
   static const String sendOTPPlaceholder = "Confirm";
   static const String orderLabel = "Order Note";
-  static const String verificationLabel = "Verification Order";
+  static const String deliveryLabel = "Delivery Details";
   static const String placeOrderBtn = "Place Order Now";
   static const String orderListPlaceholder = "Orders List";
   static const String avaliableProduct = " Market ";
@@ -42,20 +45,5 @@ class Constant {
   static const String chefLabel = " Chefs   ";
   static const String chatLabel = "Messanger";
   static const String profileLabel = "Profile";
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-  }
+  static const Color primaryColor = Color(0xFF00C012);
+}
