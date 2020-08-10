@@ -37,7 +37,7 @@ class _SearchViewState extends State<SearchView> {
             children: <Widget>[
               searchField(),
               SizedBox(height:15,),
-              items.isEmpty ? Text("No Product Found Yet",style:TextStyle(fontSize:15,color: Colors.grey[350]),) :
+              items.isEmpty ? Text("No Product Found Yet",style:TextStyle(fontSize:20,color: Colors.grey[350]),) :
               Expanded(
                 child: productsGrid(items,(itemWidth / itemHeight))
              )
@@ -51,19 +51,19 @@ class _SearchViewState extends State<SearchView> {
       padding: const EdgeInsets.all(20.0),
       child: TextFormField(
           decoration: InputDecoration(
-              border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                  borderSide: BorderSide(color: Colors.green)),
-              suffixIcon: Icon(Icons.search, color: Colors.green[700]),
+              border: UnderlineInputBorder(
+                 // borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                  borderSide: BorderSide(color: Constant.getColor("1b4332"))),
+              suffixIcon: Icon(Icons.search, color: Constant.getColor("1b4332")),
               labelText: Constant.searchPlaceholder,
               labelStyle: TextStyle(
                 fontFamily: 'Montserrat',
                 fontWeight: FontWeight.bold,
                 color: Colors.grey,
               ),
-              focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                  borderSide: BorderSide(color: Colors.green))),
+              focusedBorder: UnderlineInputBorder(
+                  //borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                  borderSide: BorderSide(color: Constant.getColor("1b4332")))),
           onChanged: (val) => filterSearchResults(val)),
     );
   }

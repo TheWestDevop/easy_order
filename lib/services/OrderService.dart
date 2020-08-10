@@ -8,35 +8,27 @@ class OrderService extends ChangeNotifier {
   AppState _status = AppState.Idle;
   String _message;
   Order _order;
-  API _api;
+  API _api = new API();
 
-  OrderService() {
-    //_status = AppState.Idle;
-  }
 
   String get message => _message;
   Order get order => _order;
 
-  Future<String> make_order(Order data) async {
-    try {
+  dynamic make_order(Order data,String authToken) async {
+    
       String url = "${Constant.MARKET_API_URL}/make/order";
-      final response = await _api.Post(url, data);
+      final response = await _api.Post(url, data.toMap(),authToken);
       return response;
-    } catch (e) {
-      print(e.toString());
-      _message = "Order Not Placed";
-      return e;
-    }
   }
 
-  Future<String> get_all_user_order(String uId) async {
+  Future<dynamic> getUserOrder(String uId,String authToken) async {
     
       String url = "${Constant.MARKET_API_URL}/all/$uId/orders";
-      final response = await _api.Get(url);
+      final response = await _api.Get(url,authToken);
       return response;
   }
-  dynamic verifyCoupon(String coupon) async {
-      var response = await _api.Get("${Constant.MARKET_API_URL}/coupon/use/$coupon");
+  dynamic verifyCoupon(String coupon,String authToken) async {
+      var response = await _api.Get("${Constant.MARKET_API_URL}/coupon/use/$coupon",authToken);
       print(" coupon response --> $response");
       return response;
     }

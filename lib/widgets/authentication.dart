@@ -2,59 +2,24 @@
 import 'package:easy_order/shared/shared.dart';
 import 'package:easy_order/widgets/widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
+import 'package:scoped_model/scoped_model.dart';
 
 
 
-Widget phoneField(){
-  return TextFormField(
-                            validator:(val)=>validatePhoneField(val),
-                            decoration:InputDecoration(
-                            prefixIcon: Icon(Icons.phone,color:Colors.green[700]),
-                            labelText: Constant.phonePlaceholder,
-                            labelStyle: TextStyle(
-                              fontFamily:'Montserrat',
-                              fontWeight:FontWeight.bold,
-                              color:Colors.grey,
-                            ),
-                            focusedBorder: OutlineInputBorder(borderSide:BorderSide(color:Colors.green[700]) ),
-                            //errorText: snapshot.error,
-                            ),
-                            
-                           // onChanged: bloc.changeUserPhone
-                          );
-                        }
-                    
-Widget nameField(){
-  return TextFormField(     
-                            validator:(val)=>validateNameField(val),
-                            decoration:InputDecoration(
-                            prefixIcon: Icon(Icons.person,color:Colors.green[700]),
-                            labelText: Constant.namePlaceholder,
-                            labelStyle: TextStyle(
-                              fontFamily:'Montserrat',
-                              fontWeight:FontWeight.bold,
-                              color:Colors.grey,
-                            ),
-                            focusedBorder: OutlineInputBorder(borderSide:BorderSide(color:Colors.green[700]) ),
-                           // errorText: snapshot.error,
-                            ),
-                            
-                            //onChanged: bloc.changeUserName
-                          );
-                        }
-                      
+                     
 Widget addressField(){
   return TextFormField(     
                             validator:(val)=>validateAddressField(val),
                             decoration:InputDecoration(
-                            prefixIcon: Icon(Icons.location_on,color:Colors.green[700]),
+                            prefixIcon: Icon(Icons.location_on,color:Constant.getColor("1b4332")),
                             labelText: Constant.addressPlaceholder,
                             labelStyle: TextStyle(
                               fontFamily:'Montserrat',
                               fontWeight:FontWeight.bold,
                               color:Colors.grey,
                             ),
-                            focusedBorder: OutlineInputBorder(borderSide:BorderSide(color:Colors.green[700]) ),
+                            focusedBorder: OutlineInputBorder(borderSide:BorderSide(color:Constant.getColor("1b4332")) ),
                             //errorText: snapshot.error,
                             ),
                             
@@ -65,16 +30,16 @@ Widget addressField(){
 Widget noteField(){
   return TextFormField( 
                             decoration:InputDecoration(
-                            border:OutlineInputBorder(borderSide:BorderSide(color:Colors.green[700]) ),
+                            border:OutlineInputBorder(borderSide:BorderSide(color:Constant.getColor("1b4332")) ),
                             helperText: "List of product and quantity",
-                            prefixIcon: Icon(Icons.shopping_cart,color:Colors.green[700]),
+                            prefixIcon: Icon(Icons.shopping_cart,color:Constant.getColor("1b4332")),
                             labelText: Constant.orderListPlaceholder,
                             labelStyle: TextStyle(
                               fontFamily:'Montserrat',
                               fontWeight:FontWeight.bold,
                               color:Colors.grey,
                             ),
-                            focusedBorder: OutlineInputBorder(borderSide:BorderSide(color:Colors.green[700]) ),
+                            focusedBorder: OutlineInputBorder(borderSide:BorderSide(color:Constant.getColor("1b4332")) ),
                             //errorText: snapshot.error,
                             ),
                            // onChanged: bloc.changeUserNote,
@@ -144,7 +109,7 @@ Widget registerLink(context){
                         child:Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Text(Constant.registerLabel,
-                            style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Montserrat', color: Colors.green[700])),
+                            style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Montserrat', color: Constant.getColor("1b4332"))),
                             
                           ),
                       ),
@@ -159,71 +124,38 @@ Widget loginHeader(){
              Container(
               padding: EdgeInsets.fromLTRB(15.0,110.0,0.0,0.0),
               child: Text(
-                'Hello',
+                'Smorfarm',
                 style:TextStyle(
-                  fontSize:80.0,fontWeight:FontWeight.bold)
+                  fontSize:60.0,
+                  fontWeight:FontWeight.bold,
+                  fontFamily: "Wavehaus"
+                  )
                 ),
               ),
               Container(
               padding: EdgeInsets.fromLTRB(15.0,175.0,0.0,0.0),
               child: Text(
-                'Dear',
+                'Market',
                 style:TextStyle(
-                  fontSize:80.0,fontWeight:FontWeight.bold)
+                  fontSize:60.0,
+                  fontWeight:FontWeight.bold,
+                  fontFamily: "Wavehaus"
+
+                  )
                 ),
               ),
               Container(
-              padding: EdgeInsets.fromLTRB(220.0,175.0,0.0,0.0),
+              padding: EdgeInsets.fromLTRB(180.0,131.0,0.0,0.0),
               child: Text(
                 '.',
                 style:TextStyle(
-                  fontSize:80.0,fontWeight:FontWeight.bold,color:Colors.green[700])
+                  fontSize:60.0,fontWeight:FontWeight.bold,color:Constant.getColor("1b4332"))
                 ),
               ),
 
           ],
           )
         );
-}
-
-Widget pictureField(context){
-  return Container(
-    child:Center(child: Text("Picture is needed security purpose")),
-  );
-}
-
-Widget displayPictureField(context){
-  return Container(
-    child:Center(child: Text("Picture is here")),
-  );
-}
-
-
-                      
-
-Widget registerBtn(){
-  return Container(
-                 height:55.0,
-                 child:Material(
-                borderRadius:BorderRadius.circular(20.0),
-                shadowColor:Colors.green[700],
-                color:Colors.green[700],
-                elevation:7.0,
-                child:GestureDetector(
-                  onTap:(){},
-                  child: Center(
-                    child:Text(
-                      Constant.registerBtn,
-                      style: TextStyle(
-                        //height:2.0,
-                        color:Colors.white,
-                        fontWeight:FontWeight.bold,
-                        fontFamily: 'Montserrat',
-                        fontSize:25,
-                      ),)
-                  ),)
-               )
-               );
 }
 
 Widget forgotBtn(context){
@@ -234,7 +166,7 @@ Widget forgotBtn(context){
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Text(Constant.forgot_password,
-                            style: TextStyle(fontWeight: FontWeight.w900, fontFamily: 'Montserrat', color: Colors.green[700])),
+                            style: TextStyle(fontWeight: FontWeight.w900, fontFamily: 'Montserrat', color: Constant.getColor("1b4332"))),
                             
                           ),
                           ),
@@ -242,12 +174,12 @@ Widget forgotBtn(context){
 }
 
 
-Widget oldUser(context){
+Widget oldUser(String text,context){
   return Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                children: <Widget>[
                  Text(
-                   Constant.oldUserlabel,
+                   text,
                    style: TextStyle(
                      fontWeight: FontWeight.bold, 
                      fontFamily:'Montserrat'
@@ -259,7 +191,7 @@ Widget oldUser(context){
                 child:Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Text(Constant.loginLabel,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Montserrat', color: Colors.green[700])),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Montserrat', color: Constant.getColor("1b4332"))),
                     
                   ),
               ),
@@ -275,14 +207,14 @@ Widget otpField(context){
               TextFormField(
                 validator:(val)=>validateStringField(val),
                 decoration:InputDecoration(
-                  prefixIcon: Icon(Icons.lock,color:Colors.green[700]),
+                  prefixIcon: Icon(Icons.lock,color:Constant.getColor("1b4332")),
                  labelText: Constant.otpPlaceholder,
                  labelStyle: TextStyle(
                    fontFamily:'Montserrat',
                    fontWeight:FontWeight.bold,
                    color:Colors.grey,
                  ),
-                 focusedBorder: OutlineInputBorder(borderSide:BorderSide(color:Colors.green[700]) )
+                 focusedBorder: OutlineInputBorder(borderSide:BorderSide(color:Constant.getColor("1b4332")) )
                 )
               ),
               SizedBox(height:40.0,),
@@ -290,8 +222,8 @@ Widget otpField(context){
                  height:55.0,
                  child:Material(
                 borderRadius:BorderRadius.circular(20.0),
-                shadowColor:Colors.green[700],
-                color:Colors.green[700],
+                shadowColor:Constant.getColor("1b4332"),
+                color:Constant.getColor("1b4332"),
                 elevation:7.0,
                 child:GestureDetector(
                   onTap:(){},
@@ -339,7 +271,7 @@ Widget phoneAuthLabel(){
               child: Text(
                 '.',
                 style:TextStyle(
-                  fontSize:80.0,fontWeight:FontWeight.bold,color:Colors.green[700])
+                  fontSize:80.0,fontWeight:FontWeight.bold,color:Constant.getColor("1b4332"))
                 ),
               ),
 
@@ -370,11 +302,11 @@ Widget signUpLabel(){
                 ),
               ),
               Container(
-              padding: EdgeInsets.fromLTRB(69.0,145.0,0.0,0.0),
+              padding: EdgeInsets.fromLTRB(74.0,145.0,0.0,0.0),
               child: Text(
                 '.',
                 style:TextStyle(
-                  fontSize:80.0,fontWeight:FontWeight.bold,color:Colors.green[700])
+                  fontSize:80.0,fontWeight:FontWeight.bold,color:Constant.getColor("1b4332"))
                 ),
               ),
 
@@ -408,7 +340,7 @@ Widget otpLabel(){
               child: Text(
                 '.',
                 style:TextStyle(
-                  fontSize:80.0,fontWeight:FontWeight.bold,color:Colors.green[700])
+                  fontSize:80.0,fontWeight:FontWeight.bold,color:Constant.getColor("1b4332"))
                 ),
               ),
 
@@ -417,43 +349,36 @@ Widget otpLabel(){
         );
 }
 
-Widget authAppBarField(context,String title){
-  return  PreferredSize(
-        preferredSize: Size(double.infinity, 100),
-        child: Container(
-          decoration: BoxDecoration(
-            boxShadow: [BoxShadow(
-              color: Colors.transparent,
-              spreadRadius: 5,
-              blurRadius: 2
-            )]
-          ),
-          width: MediaQuery.of(context).size.width,
-          height: 100,
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20),bottomRight: Radius.circular(20))
+AppBar authAppBar(BuildContext context, String title) {
+  return AppBar(
+    title: Text(
+      title,
+      style: TextStyle(color: Colors.white, fontSize: 16),
+    ),
+    leading: new IconButton(
+        icon: new Icon(
+            MaterialCommunityIcons.getIconData("keyboard-backspace"),
+            color: Constant.getColor("1b4332"),
+            size:50.0,
             ),
-            child: Container(
-              margin: EdgeInsets.fromLTRB(0, 50, 0, 0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                                onTap:()=> Navigator.of(context).pop(), //:  null,
-                           
-                                    child:Icon(Icons.arrow_back,size: 40,color: Colors.green[700],)
-                                  ),
-                  Text("Avaliable Empty",style: TextStyle(fontSize: 30,fontWeight:FontWeight.bold,color: Colors.transparent),),
-                  Text('',style:TextStyle(fontSize: 30,fontWeight:FontWeight.bold,color: Colors.transparent),),
-                ],
-              ),
-            ),
-          ),
-        ),
-      );
+        onPressed: () => Navigator.of(context).pop()),
+    actions: <Widget>[
+      // GestureDetector(
+      //   onTap: () => Navigator.of(context).pushNamed('/search'),
+      //   child: Icon(
+      //     MaterialCommunityIcons.getIconData("magnify"),
+      //     color: Colors.white,
+      //   ),
+      // ),
+      Stack(
+        children: <Widget>[
+          Text('')
+        ],
+      ),
+    ],
+    backgroundColor: Colors.white24,
+    elevation:0.0,
+  );
 }
 
 Widget phoneAuthField(context){
@@ -464,14 +389,14 @@ Widget phoneAuthField(context){
               TextFormField(
                 validator:(val)=>validatePhoneField(val),
                 decoration:InputDecoration(
-                  prefixIcon: Icon(Icons.phone_iphone,color:Colors.green[700]),
+                  prefixIcon: Icon(Icons.phone_iphone,color:Constant.getColor("1b4332")),
                  labelText: Constant.phonePlaceholder,
                  labelStyle: TextStyle(
                    fontFamily:'Montserrat',
                    fontWeight:FontWeight.bold,
                    color:Colors.grey,
                  ),
-                 focusedBorder: OutlineInputBorder(borderSide:BorderSide(color:Colors.green[700]) )
+                 focusedBorder: OutlineInputBorder(borderSide:BorderSide(color:Constant.getColor("1b4332")) )
                 )
               ),
               SizedBox(height:40.0,),
@@ -480,8 +405,8 @@ Widget phoneAuthField(context){
                  height:55.0,
                  child:Material(
                 borderRadius:BorderRadius.circular(20.0),
-                shadowColor:Colors.green[700],
-                color:Colors.green[700],
+                shadowColor:Constant.getColor("1b4332"),
+                color:Constant.getColor("1b4332"),
                 elevation:7.0,
                 child:GestureDetector(
                   onTap:()=>Navigator.of(context).pushNamed('/otp'),
@@ -526,11 +451,11 @@ Widget forgotPasswordLabel(){
                 ),
               ),
               Container(
-              padding: EdgeInsets.fromLTRB(262.0,45.0,0.0,0.0),
+              padding: EdgeInsets.fromLTRB(223.0,10.0,0.0,0.0),
               child: Text(
                 '.',
                 style:TextStyle(
-                  fontSize:80.0,fontWeight:FontWeight.bold,color:Colors.green[700])
+                  fontSize:80.0,fontWeight:FontWeight.bold,color:Constant.getColor("1b4332"))
                 ),
               ),
 
@@ -547,14 +472,14 @@ Widget forgotPasswordField(){
               TextFormField(
                 validator:(val)=>validateEmailField(val),
                 decoration:InputDecoration(
-                  prefixIcon: Icon(Icons.email,color:Colors.green[700]),
+                  prefixIcon: Icon(Icons.email,color:Constant.getColor("1b4332")),
                  labelText: Constant.emailPlaceholder,
                  labelStyle: TextStyle(
                    fontFamily:'Montserrat',
                    fontWeight:FontWeight.bold,
                    color:Colors.grey,
                  ),
-                 focusedBorder: UnderlineInputBorder(borderSide:BorderSide(color:Colors.green[700]) )
+                 focusedBorder: UnderlineInputBorder(borderSide:BorderSide(color:Constant.getColor("1b4332")) )
                 )
               ),
               SizedBox(height:40.0,),
@@ -562,8 +487,8 @@ Widget forgotPasswordField(){
                  height:55.0,
                  child:Material(
                 borderRadius:BorderRadius.circular(20.0),
-                shadowColor:Colors.green[700],
-                color:Colors.green[700],
+                shadowColor:Constant.getColor("1b4332"),
+                color:Constant.getColor("1b4332"),
                 elevation:7.0,
                 child:GestureDetector(
                   onTap:(){},

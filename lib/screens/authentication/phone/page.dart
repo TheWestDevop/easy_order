@@ -10,7 +10,7 @@ class PageState extends State<Phone_Page> {
   Widget build(BuildContext context) {
     return new Scaffold(
       resizeToAvoidBottomPadding: false,
-      appBar: authAppBarField(context,''),
+    //  appBar: authAppBar(context,''),
      body: Column(
        crossAxisAlignment: CrossAxisAlignment.stretch,
        children:<Widget>[

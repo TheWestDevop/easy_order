@@ -1,39 +1,56 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:http/http.dart' as connect;
 
 class API {
-  
-  Future Post(url, data) async {
+  Future Post(url, data, [authToken]) async {
+    print("sending POST request to $url ");
+
+    final response = await connect.post(url,
+        body: data, headers: {HttpHeaders.authorizationHeader: authToken});
+
+    return Future.value(json.decode(response.body));
+  }
+
+  Future Get(url,[authToken]) async {
+
+    print("sending GET request to $url");
+
+    final response = await connect.get(url,headers: {HttpHeaders.authorizationHeader:authToken});
     
-    print("sending request to $url");
-
-    final response = await connect.post(url, body: data);
+    print("get response is $response");
 
     return Future.value(json.decode(response.body));
   }
 
-  Future Get(url) async {
-    final response = await connect.post(url);
+  Future Put(url, data,[authToken]) async {
+
+    print("sending PUT  request to $url");
+       
+
+    final response = await connect.put(url,
+        body: data, headers: {HttpHeaders.authorizationHeader: authToken});
 
     return Future.value(json.decode(response.body));
   }
 
-  Future Put(url, data) async {
-    final response = await connect.put(url, body: data);
+  Future Patch(url, data,[authToken]) async {
+
+    print("sending PATCH request to $url");
+
+
+    final response = await connect.patch(url, body: data,headers: {HttpHeaders.authorizationHeader:authToken});
 
     return Future.value(json.decode(response.body));
   }
 
-  Future Patch(url, data) async {
-    final response = await connect.patch(url, body: data);
+  Future Delete(url,[authToken]) async {
 
-    return Future.value(json.decode(response.body));
-  }
+    print("sending DELETE request to $url");
 
-  Future Delete(url) async {
-    final response = await connect.delete(url);
-
+    final response = await connect.delete(url,headers: {HttpHeaders.authorizationHeader:authToken});
+    
     return Future.value(json.decode(response.body));
   }
 }

@@ -25,35 +25,10 @@ class _ProductViewState extends State<ProductView> {
       return Scaffold(
         resizeToAvoidBottomPadding: false,
        // appBar: homebar(context, Constant.avaliableProduct),
-        body: productTable(context, items, filterSearchResults),
+        body: productTable(context, items),
         //bottomNavigationBar:bottomNavBar(context,0),
       );
     });
   }
-
-  void filterSearchResults(String query) {
-    List<Product> productSearchList = productViewModel.products;
-    if (query.isNotEmpty) {
-      List<Product> searchedListData = List<Product>();
-
-      productSearchList.forEach((item) {
-        if (item.title.toLowerCase().contains(query)) {
-          searchedListData.clear();
-          searchedListData.add(item);
-        }
-      });
-      setState(() {
-        items.clear();
-        items.addAll(searchedListData);
-      });
-      return;
-    } else {
-      setState(() {
-        items.clear();
-        items.addAll(productViewModel.products);
-      });
-    }
-  }
-
   
 }

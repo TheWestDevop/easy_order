@@ -169,7 +169,7 @@ class _CartPageState extends State<CartPage> {
               //                 print("total is === $total");
               //               });
               //             });
-              //             // model.verifyCoupon(value).then((result) {
+              //             // model.verifyCoupon(value,user.token).then((result) {
               //             //   if (result['status']) {
               //             //
               //             //   locator<CartViewModel>().update_total_base_on_coupon(500);

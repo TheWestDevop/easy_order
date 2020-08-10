@@ -15,7 +15,7 @@ class Profile {
         _token = data['token'] ?? '';
 
   Profile.map(dynamic data)
-      : _id = data['id'] ?? '',
+      : _id = data['user_id'] ?? '',
         _name = data['name'] ?? '',
         _avatar = data['avatar'] ?? '',
         _phone = data['phone'] ?? '',
@@ -24,7 +24,7 @@ class Profile {
 
   Map<String, dynamic> toMap() {
     var map = new Map<String, dynamic>();
-    map['id'] = _id;
+    map['user_id'] = _id;
     map['name'] = _name;
     map['phone'] = _phone;
     map['email'] = _email;
@@ -38,6 +38,8 @@ class Profile {
   String get phone => _phone;
   String get email => _email;
   String get id => _id;
+  String get token => _token;
+
 
 
 

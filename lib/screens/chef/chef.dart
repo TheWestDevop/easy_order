@@ -9,12 +9,17 @@ import 'package:scoped_model/scoped_model.dart';
 
 part 'page.dart';
 
-class Chefs extends StatelessWidget {
+class SearchChef extends StatelessWidget {
   ChefViewModel chef = locator<ChefViewModel>();
-  AuthViewModel account = locator<AuthViewModel>();
+  AccountViewModel account = locator<AccountViewModel>();
 
   @override
   Widget build(BuildContext context) {
-    return ScopedModel<ChefViewModel>(model: chef, child: ChefsPage());
+    return ScopedModel<AccountViewModel>(
+      model: account, 
+      child: ScopedModel<ChefViewModel>(
+      model: chef, 
+      child: ChefsPage())
+    );
   }
 }

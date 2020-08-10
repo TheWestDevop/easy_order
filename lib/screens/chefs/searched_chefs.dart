@@ -1,0 +1,34 @@
+import 'package:easy_order/models/models.dart';
+import 'package:easy_order/services/services.dart';
+import 'package:easy_order/viewModel/viewModel.dart';
+import 'package:easy_order/widgets/widget.dart';
+import 'package:flutter/material.dart';
+
+import 'package:easy_order/shared/shared.dart';
+import 'package:scoped_model/scoped_model.dart';
+
+part 'page.dart';
+
+class ListChefs extends StatelessWidget {
+  ChefViewModel chef = locator<ChefViewModel>();
+  AccountViewModel account = locator<AccountViewModel>();
+  final List<Chef> chefs;
+
+  ListChefs({Key key, this.chefs}) : super(key: key);
+
+
+  @override
+  Widget build(BuildContext context) {
+    return ScopedModel<AccountViewModel>(
+      model: account, 
+      child: ScopedModel<ChefViewModel>(
+      model: chef, 
+      child: ScopedModel<CartViewModel>(
+              model:locator<CartViewModel>(),
+              child:ChefPage(key:key,chefs:chefs,
+              )
+          )
+      )
+    );
+  }
+}

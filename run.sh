@@ -1,0 +1,1 @@
+flutter clean && Clear && flutter run 

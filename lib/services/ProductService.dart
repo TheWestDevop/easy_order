@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 
 class ProductService extends ChangeNotifier {
 
-API _api;
+API _api = new API();
 
 List<Product> getProducts() {
     var demo_product = [

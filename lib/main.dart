@@ -12,10 +12,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   deleteCache();
   setupLocator();
-  
   bool isUserIn = await locator<Preference>().isUserLoggedIn;
   if (isUserIn == true) {
-    locator<AccountViewModel>().getCacheProfile(); 
+    locator<AccountViewModel>().getCacheProfile();
     locator<CartViewModel>().fetchCartList();
   }
   runApp(MyApp());
@@ -34,7 +33,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
-    
     super.initState();
   }
 
@@ -43,28 +41,34 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body:FutureBuilder<bool>(
-        future: locator<Preference>().isUserLoggedIn,
-        builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-          // print("isUserLoggedIn --> ${snapshot.data}");
-          // print("user from account model :- $user");
-          if (snapshot.data == false || snapshot.data == null) {
-            return SplashScreen.navigate(
-              name: 'assets/icon/loader.flr',
-              next: (context) => Login(),
-              until: () => Future.delayed(Duration(seconds: 3)),
-              startAnimation: 'load',
-            );
-          } else {
-            return SplashScreen.navigate(
-              name: 'assets/icon/loader.flr',
-              next: (context) => Home(user: locator<AccountViewModel>().profile,),
-              until: () => Future.delayed(Duration(seconds: 3)),
-              startAnimation: 'load',
-            );
-          }
-        })
-        ),
+          body: FutureBuilder<bool>(
+              future: locator<Preference>().isUserLoggedIn,
+              builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+                // print("isUserLoggedIn --> ${snapshot.data}");
+                // print("user from account model :- $user");
+                if (snapshot.data == false || snapshot.data == null) {
+                  return SplashScreen.navigate(
+                    name: 'assets/icon/loader.flr',
+                    next: (context) => Login(),
+                    until: () => Future.delayed(Duration(seconds: 3)),
+                    startAnimation: 'load',
+                  );
+                } else {
+                  Profile user = locator<AccountViewModel>().profile;
+
+                  locator<OrderViewModel>()
+                      .getUserOrders(user.id,user.token);
+
+                  return SplashScreen.navigate(
+                    name: 'assets/icon/loader.flr',
+                    next: (context) => Home(
+                      user:user,
+                    ),
+                    until: () => Future.delayed(Duration(seconds: 3)),
+                    startAnimation: 'load',
+                  );
+                }
+              })),
       onGenerateRoute: RouteGenerator.generateRoute,
       theme: ThemeData(primaryColor: Colors.white),
     );

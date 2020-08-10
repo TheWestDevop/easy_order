@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating/flutter_rating.dart';
 import 'package:scoped_model/scoped_model.dart';
 
-Widget productTable(context, List<Product> product, Function productSearch) {
+Widget productTable(context, List<Product> product) {
   var size = MediaQuery.of(context).size;
 
   /*24 is for notification bar on Android*/
@@ -30,8 +30,8 @@ Widget searchField(Function productSearch) {
         decoration: InputDecoration(
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                borderSide: BorderSide(color: Colors.deepPurple)),
-            prefixIcon: Icon(Icons.search, color: Colors.green[700]),
+                borderSide: BorderSide(color: Constant.getColor("1b4332"))),
+            prefixIcon: Icon(Icons.search, color: Constant.getColor("1b4332")),
             labelText: Constant.searchPlaceholder,
             labelStyle: TextStyle(
               fontFamily: 'Montserrat',
@@ -40,7 +40,7 @@ Widget searchField(Function productSearch) {
             ),
             focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                borderSide: BorderSide(color: Colors.deepPurple))),
+                borderSide: BorderSide(color: Constant.getColor("1b4332")))),
         onChanged: (val) => productSearch(val)),
   );
 }
@@ -60,7 +60,6 @@ Widget productsGrid(List<Product> data, aspectRadtio) {
           padding: EdgeInsets.all(5.0),
           child: TrendingItem(
             product: data[index],
-            gradientColors: [Color(0XFFa466ec), Colors.purple[400]],
           ),
         );
       },
@@ -82,7 +81,6 @@ Column buildTrending(List<Product> data) {
               padding: EdgeInsets.all(5.0),
               child: TrendingItem(
                 product: data[index],
-                gradientColors: [Color(0XFFa466ec), Colors.purple[400]],
               ),
             );
           },
@@ -187,7 +185,9 @@ Widget generateCart(Product product) {
                           children: <Widget>[
                             IconButton(
                               icon: Icon(Icons.remove_circle_outline),
-                              onPressed: () =>  product.quantity == "1" ? null : model.decreaseQuantity(product),
+                              onPressed: () => product.quantity == "1"
+                                  ? null
+                                  : model.decreaseQuantity(product),
                             ),
                             Text(
                               '${product.quantity}',
@@ -240,7 +240,7 @@ Widget productDetailsBottomNavigation(
             ),
           ),
           RaisedButton(
-            color: Colors.green[700],
+            color: Constant.getColor("1b4332"),
             onPressed: () {
               viewModel.addCart(item);
               Timer(Duration(milliseconds: 500), () {
@@ -283,9 +283,8 @@ Widget cacheImage(String url) {
 
 class TrendingItem extends StatelessWidget {
   final Product product;
-  final List<Color> gradientColors;
 
-  TrendingItem({this.product, this.gradientColors});
+  TrendingItem({this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -392,3 +391,4 @@ class TrendingItem extends StatelessWidget {
     );
   }
 }
+

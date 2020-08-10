@@ -14,13 +14,14 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   void initState() {
+    progressDialog = new ProgressDialog(context, ProgressDialogType.Normal);
+    progressDialog.setMessage('Logging in...');
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    progressDialog = new ProgressDialog(context, ProgressDialogType.Normal);
-    progressDialog.setMessage('Logging in...');
+    
     return new Scaffold(
       resizeToAvoidBottomPadding: false,
       body: ListView(
@@ -47,10 +48,10 @@ class _LoginFormState extends State<LoginForm> {
                           height: 40.0,
                         ),
                         loginBtn(context),
-                        SizedBox(
-                          height: 20.0,
-                        ),
-                        loginUsePhone(context),
+                        // SizedBox(
+                        //   height: 20.0,
+                        // ),
+                        // loginUsePhone(context),
                         SizedBox(
                           height: 20.0,
                         ),
@@ -72,15 +73,15 @@ class _LoginFormState extends State<LoginForm> {
         _email = val;
       },
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.email, color: Colors.green[700]),
+        prefixIcon: Icon(Icons.email, color: Constant.getColor("1b4332")),
         labelText: Constant.emailPlaceholder,
         labelStyle: TextStyle(
           fontFamily: 'Montserrat',
           fontWeight: FontWeight.bold,
           color: Colors.grey,
         ),
-        focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.green[700])),
+        focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: Constant.getColor("1b4332"))),
         //errorText: snapshot.error,
       ),
       //onChanged: bloc.changeUserEmail,
@@ -94,15 +95,15 @@ class _LoginFormState extends State<LoginForm> {
         _password = val;
       },
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.lock, color: Colors.green[700]),
+        prefixIcon: Icon(Icons.lock, color: Constant.getColor("1b4332")),
         labelText: Constant.passwordPlaceholder,
         labelStyle: TextStyle(
           fontFamily: 'Montserrat',
           fontWeight: FontWeight.bold,
           color: Colors.grey,
         ),
-        focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.green[700])),
+        focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: Constant.getColor("1b4332"))),
         //errorText: snapshot.error,
       ),
       obscureText: true,
@@ -117,11 +118,12 @@ class _LoginFormState extends State<LoginForm> {
           height: 55.0,
           child: Material(
               borderRadius: BorderRadius.circular(20.0),
-              shadowColor: Colors.green[700],
-              color: Colors.green[700],
+              shadowColor: Constant.getColor("1b4332"),
+              color: Constant.getColor("1b4332"),
               elevation: 7.0,
               child: RaisedButton(
-                  color: Colors.green[700],
+                 
+                  color: Constant.getColor("1b4332"),
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[

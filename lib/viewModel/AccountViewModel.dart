@@ -34,12 +34,9 @@ class AccountViewModel extends Model {
   }
 
   getCacheProfile() async {
-
      var data = await locator<Preference>().userProfile;
-    _profile = Profile.fromJson(data);
-
-    //print("user profile --> ${_profile.name}");
-   
+     print("user profile --> $data");
+    _profile = Profile.fromJson(data);   
   }
 
   Profile get profile => _profile;

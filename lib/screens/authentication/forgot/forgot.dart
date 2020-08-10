@@ -1,4 +1,5 @@
 
+import 'package:easy_order/shared/shared.dart';
 import 'package:easy_order/widgets/widget.dart';
 import 'package:flutter/material.dart';
 

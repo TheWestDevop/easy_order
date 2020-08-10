@@ -19,8 +19,8 @@ Widget nextBtn(
       height: 55.0,
       child: Material(
           borderRadius: BorderRadius.circular(20.0),
-          shadowColor: Colors.green[700],
-          color: Colors.green[700],
+          shadowColor: Constant.getColor("1b4332"),
+          color: Constant.getColor("1b4332"),
           elevation: 7.0,
           child: GestureDetector(
             onTap: () => Navigator.of(context).pushNamed(route), //:  null,
@@ -101,7 +101,7 @@ AppBar buildAppBar(
         ],
       ),
     ],
-    backgroundColor: Colors.green[700],
+    backgroundColor: Constant.getColor("1b4332"),
   );
 }
 
@@ -158,7 +158,7 @@ AppBar pageAppBar(BuildContext context, String title) {
         ],
       ),
     ],
-    backgroundColor: Colors.green[700],
+    backgroundColor: Constant.getColor("1b4332"),
   );
 }
 
@@ -167,7 +167,7 @@ leftDrawerMenu(Profile user, BuildContext context) {
 
   return Container(
     decoration: BoxDecoration(
-      color: Colors.green[700],
+      color: Constant.getColor("1b4332"),
     ),
     child: ListView(
       padding: EdgeInsets.zero,
@@ -206,7 +206,7 @@ leftDrawerMenu(Profile user, BuildContext context) {
                   ),
                 )),
             decoration: BoxDecoration(
-              color: Colors.green[700],
+              color: Constant.getColor("1b4332"),
             ),
           ),
         ),
@@ -220,7 +220,37 @@ leftDrawerMenu(Profile user, BuildContext context) {
             style: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.w600, color: blackColor),
           ),
-          onTap: () => Navigator.of(context).pushNamed('/home'),
+          onTap: () => Navigator.of(context).pushNamed('/home',arguments: user),
+        ),
+        ListTile(
+          leading: Icon(Feather.getIconData('list'), color: blackColor),
+          title: Text('My Orders',
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: blackColor)),
+          onTap: () => Navigator.of(context).pushNamed('/orders'),
+        ),
+        ListTile(
+          leading: Icon(Feather.getIconData('book'), color: blackColor),
+          title: Text('My Bookings',
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: blackColor)),
+          onTap: () => Navigator.of(context).pushNamed('/bookings'),
+        ),
+        ListTile(
+          leading:
+          Icon(Feather.getIconData('file-text'), color: blackColor),
+          title: Text('How To',
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: blackColor)),
+          onTap: () {
+            //Nav.route(context, ProductList());
+          },
         ),
         ListTile(
           leading: Icon(Feather.getIconData('search'), color: blackColor),
@@ -277,29 +307,7 @@ leftDrawerMenu(Profile user, BuildContext context) {
                   color: blackColor)),
           onTap: () => Navigator.of(context).pushNamed('/cart'),
         ),
-        ListTile(
-          leading: Icon(Feather.getIconData('list'), color: blackColor),
-          title: Text('My Orders',
-              style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: blackColor)),
-          onTap: () {
-            ////Nav.route(context, ProductList());
-          },
-        ),
-        // ListTile(
-        //   leading:
-        //   Icon(Feather.getIconData('message-circle'), color: blackColor),
-        //   title: Text('Support',
-        //       style: TextStyle(
-        //           fontSize: 16,
-        //           fontWeight: FontWeight.w600,
-        //           color: blackColor)),
-        //   onTap: () {
-        //     //Nav.route(context, ProductList());
-        //   },
-        // ),
+        
         ListTile(
           leading: Icon(Feather.getIconData('help-circle'), color: blackColor),
           title: Text('Help',
@@ -311,6 +319,7 @@ leftDrawerMenu(Profile user, BuildContext context) {
             // Nav.route(context, UserSettings());
           },
         ),
+        
         // ListTile(
         //   leading: Icon(Feather.getIconData('settings'), color: blackColor),
         //   title: Text('Settings',

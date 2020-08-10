@@ -4,3 +4,4 @@ export './product.dart';
 export './profile.dart';
 export 'chefs.dart';
 export './kitchen.dart';
+export './bookings.dart';

@@ -14,10 +14,18 @@ class RouteGenerator {
       break;
       case '/orders':
       return MaterialPageRoute(builder:(_) => Orders());
+      case '/bookings':
+      return MaterialPageRoute(builder:(_) => UserBookings());
       case '/kitchens':
       return MaterialPageRoute(builder:(_) => Kitchens());
       case '/chefs':
-      return MaterialPageRoute(builder:(_) => Chefs());
+      return MaterialPageRoute(builder:(_) => SearchChef());
+      case '/search/chef/nickname':
+      return MaterialPageRoute(builder:(_) => SearchChefNickName());
+      case '/avaliable/chefs':
+       List<Chef> chefs = settings.arguments;
+       return MaterialPageRoute(builder:(_) => ListChefs(chefs:chefs));
+      break;
       case '/chats':
       return MaterialPageRoute(builder:(_) => Chat());
       break;
@@ -30,15 +38,13 @@ class RouteGenerator {
       case '/search':
       return MaterialPageRoute(builder:(_) => Search_Product());
       break;
-       case '/detail':
-       final details = settings.arguments;
-        if (details is Product) {
-          return MaterialPageRoute(builder:(_) => Details(detail:details));
-        }else if(details is Kitchen){
-          return MaterialPageRoute(builder:(_) => Kitchen_Details(detail:details));
-        } else {
-        return MaterialPageRoute(builder:(_) => Error());
-        }
+      case '/detail':
+       Product details = settings.arguments;
+       return MaterialPageRoute(builder:(_) => Details(detail:details));
+      break;
+      case '/order/detail':
+       UserOrder detail = settings.arguments;
+       return MaterialPageRoute(builder:(_) => Order_Details(detail:detail));
       break;
       case '/cart':
       return MaterialPageRoute(builder:(_) => CartItem());

@@ -8,8 +8,7 @@ import 'package:scoped_model/scoped_model.dart';
 
 class ChefViewModel extends Model {
  
-   ProductViewModel _productViewModel = locator<ProductViewModel>();
-   ChefService chefService = locator<ChefService>();
+   ChefService _chefService = locator<ChefService>();
 
 
   List<Chef> _data = [];
@@ -17,15 +16,37 @@ class ChefViewModel extends Model {
    // Item List
   List<Chef> get itemListing => _data;
 
+  List<Bookings> _user_bookings = [];
 
 
-  ChefViewModel(){
-    //;
-    
-    
+
+  Future<dynamic> searchChef(String state,String lga, String dish,String authToken) async {
+    // print("user query ==> $state $lga $dish");
+    var data = {"state": state, "lga": lga, "dish": dish};
+     var response = await _chefService.search(data,authToken);
+    return response;
+  }
+  Future<dynamic> searchChefNickname(String nickname,String authToken) async {
+    // print("user query ==> $state $lga $dish");
+     var response = await _chefService.searchNickname(nickname,authToken);
+    return response;
   }
 
+  Future<dynamic> getUserBookings(uid, token) async {
+    // print("user bookings response ==> $token");
 
+    var response = await _chefService.getUserBooking(uid, token);
+    // print("user bookings response ==> $response");
+    if (response['status']) {
+      _user_bookings.clear();
+      List<dynamic> list = response['data'];
+      _user_bookings = list.map((item) => Bookings.fromJson(item)).toList();
+      notifyListeners();
+    }
+    return response;
+  }
+
+  List<Bookings> get bookings => _user_bookings;
 
   // fetchChef() async {
   //   try {

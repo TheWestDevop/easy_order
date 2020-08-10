@@ -54,6 +54,8 @@ dependencies:
   # firebase_messaging: ^6.0.16
   flutter_paystack: ^1.0.3+1
   datetime_picker_formfield: ^1.0.0
+  division: ^0.6.1
+
 
 
 dev_dependencies:
@@ -82,6 +84,8 @@ flutter:
   assets:
     - assets/icon/loader.flr
     - assets/images/loading.gif
+    - assets/images/chef.gif
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

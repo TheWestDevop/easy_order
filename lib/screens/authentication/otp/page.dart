@@ -10,7 +10,7 @@ class _OTP_PageState extends State<OTP_Page> {
   Widget build(BuildContext context) {
     return new Scaffold(
       resizeToAvoidBottomPadding: false,
-      appBar: authAppBarField(context,''),
+    //  appBar: authAppBar(context,''),
      body: Column(
        crossAxisAlignment: CrossAxisAlignment.stretch,
        children:<Widget>[

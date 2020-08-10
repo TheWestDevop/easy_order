@@ -126,18 +126,18 @@ class CartViewModel extends Model {
   }
 
   updateFavItem(Product product) async {
-    try {
-      var qry =
-          "UPDATE Products set fav = ${product.fav ? 1 : 0} where id = ${product.id}";
-      _db.rawUpdate(qry).then((res) {
-        print("UPDATE RES ${res}");
-      }).catchError((e) {
-        print("UPDATE ERR ${e}");
-      });
-    } catch (e) {
-      print("ERRR @@");
-      print(e);
-    }
+    // try {
+    //   var qry =
+    //       "UPDATE Products set fav = ${product.fav ? 1 : 0} where id = ${product.id}";
+    //   _db.rawUpdate(qry).then((res) {
+    //     print("UPDATE RES ${res}");
+    //   }).catchError((e) {
+    //     print("UPDATE ERR ${e}");
+    //   });
+    // } catch (e) {
+    //   print("ERRR @@");
+    //   print(e);
+    // }
   }
 
   // Add In fav list
@@ -219,6 +219,7 @@ class CartViewModel extends Model {
         print(data);
         int _index = _cart.indexWhere((dd) => dd.id == product.id);
         _cart.removeAt(_index);
+        this.fetchCartList();
         notifyListeners();
       }).catchError((e) {
         print(e);
@@ -235,6 +236,13 @@ class CartViewModel extends Model {
 
   void update_total_base_on_coupon(double amount) async {
     sub_total -= amount;
+    notifyListeners();
+  }
+
+  void clear_cart() async {
+    _cart.clear();
+    await _db.rawQuery('TRUNCATE cart_list');
+    await  this.fetchCartList();
     notifyListeners();
   }
 

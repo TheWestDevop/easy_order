@@ -13,7 +13,12 @@ class AuthService {
     return response;
   }
 
-  Future<Map<String, dynamic>> register() {}
+  Future<Map<String, dynamic>> register(Map data) async {
+     //print("new user data --> $data");
+    var response = await api.Put("${Constant.USER_API_URL}/register", data);
+     print("register response --> $response");
+    return response;
+  }
 
   Future<String> phoneAuth() {}
 

@@ -13,7 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AuthViewModel extends Model {
   AuthService _authService = locator<AuthService>();
   AppViewModel _appViewModel = locator<AppViewModel>();
- 
+
   AppState _status;
 
   AppState get status => _status;
@@ -26,10 +26,10 @@ class AuthViewModel extends Model {
     _status = state;
   }
 
+  dynamic get userProfile => Preference.getMap("profile") == null
+      ? null
+      : Profile.map(Preference.getMap("profile"));
 
-
-  dynamic get userProfile => Preference.getMap("profile") == null ? null : Profile.map(Preference.getMap("profile"));
- 
   register() {}
 
   phoneAuth() {}
@@ -45,15 +45,31 @@ class AuthViewModel extends Model {
       Preference.setBool('userloggedIn', true);
       Preference.setMap("profile", _profile.toMap());
       notifyListeners();
-      return {
-        "status":true,
-        "user":_profile
-      };
+      return {"status": true, "user": _profile};
     } else {
       notifyListeners();
       return {
-        "status":false,
+        "status": false,
       };
+    }
+  }
+
+  Future<dynamic> registerUser(
+      String name, String phone, String email, String password) async {
+    var user = {
+      "name": name,
+      "phone": phone,
+      "email": email,
+      "password": password
+    };
+    var response = await _authService.register(user);
+    // print("auth response $response");
+    if (response['status']) {
+      notifyListeners();
+      return response;
+    } else {
+      notifyListeners();
+      return response;
     }
   }
 

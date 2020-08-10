@@ -17,7 +17,9 @@ class Register extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Register_Page(),
+      body: ScopedModel<AuthViewModel>(
+              model:locator<AuthViewModel>(),
+              child: Register_Page()),
     );
   }  
 }

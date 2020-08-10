@@ -4,7 +4,6 @@ import 'package:easy_order/shared/shared.dart';
 import 'package:easy_order/viewModel/viewModel.dart';
 import 'package:easy_order/widgets/widget.dart';
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
 
 Widget profilePicture(String img) {
   return CircleAvatar(
@@ -23,8 +22,8 @@ Widget profileDetails(context, Profile profile) {
         TextFormField(
           decoration: InputDecoration(
             border: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.green[700])),
-            prefixIcon: Icon(Icons.person, color: Colors.green[700]),
+                borderSide: BorderSide(color: Constant.getColor("1b4332"))),
+            prefixIcon: Icon(Icons.person, color: Constant.getColor("1b4332")),
             labelText: Constant.namePlaceholder,
             labelStyle: TextStyle(
               fontFamily: 'Montserrat',
@@ -43,8 +42,8 @@ Widget profileDetails(context, Profile profile) {
           enabled: false,
           decoration: InputDecoration(
             border: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.green[700])),
-            prefixIcon: Icon(Icons.phone, color: Colors.green[700]),
+                borderSide: BorderSide(color: Constant.getColor("1b4332"))),
+            prefixIcon: Icon(Icons.phone, color: Constant.getColor("1b4332")),
             labelText: Constant.phonePlaceholder,
             labelStyle: TextStyle(
               fontFamily: 'Montserrat',
@@ -61,8 +60,8 @@ Widget profileDetails(context, Profile profile) {
           enabled: false,
           decoration: InputDecoration(
             border: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.green[700])),
-            prefixIcon: Icon(Icons.email, color: Colors.green[700]),
+                borderSide: BorderSide(color: Constant.getColor("1b4332"))),
+            prefixIcon: Icon(Icons.email, color: Constant.getColor("1b4332")),
             labelText: Constant.emailPlaceholder,
             labelStyle: TextStyle(
               fontFamily: 'Montserrat',
@@ -78,11 +77,11 @@ Widget profileDetails(context, Profile profile) {
           height: 55.0,
           child: Material(
             borderRadius: BorderRadius.circular(20.0),
-            shadowColor: Colors.green[700],
-            color: Colors.green[700],
+            shadowColor: Constant.getColor("1b4332"),
+            color: Constant.getColor("1b4332"),
             elevation: 7.0,
             child: RaisedButton(
-                color: Colors.green[700],
+                color: Constant.getColor("1b4332"),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -206,7 +205,7 @@ class CategoriesListView extends StatelessWidget {
                           padding: EdgeInsets.all(12),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: Colors.green[700],
+                            color: Constant.getColor("1b4332"),
                             border: Border.all(
                               color: Colors.blueGrey,
                               width: 1,
