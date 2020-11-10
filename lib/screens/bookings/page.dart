@@ -43,7 +43,7 @@ class _BookingPageState extends State<BookingPage> {
                     child: status
                         ? Text("")
                         : (locator<ChefViewModel>().bookings.isEmpty
-                            ? emptyBookingList()
+                            ? emptyContentList("No Booking Available")
                             : Container(
                               color:Colors.white38,
                               child: ListView(

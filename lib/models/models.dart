@@ -1,7 +1,9 @@
-export './order.dart';
-export 'cart.dart';
-export './product.dart';
-export './profile.dart';
-export 'chefs.dart';
-export './kitchen.dart';
-export './bookings.dart';
+export 'Order.dart';
+export 'Cart.dart';
+export 'Product.dart';
+export 'Profile.dart';
+export 'Chefs.dart';
+export 'Kitchen.dart';
+export 'Booking.dart';
+export 'Recipe.dart';
+export 'Category.dart';

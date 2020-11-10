@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:easy_order/models/profile.dart';
+import 'package:easy_order/models/Profile.dart';
 import 'package:easy_order/services/services.dart';
 import 'package:easy_order/shared/shared.dart';
 import 'package:easy_order/viewModel/viewModel.dart';
@@ -12,19 +12,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthViewModel extends Model {
   AuthService _authService = locator<AuthService>();
-  AppViewModel _appViewModel = locator<AppViewModel>();
+  
 
-  AppState _status;
-
-  AppState get status => _status;
-
-  AuthViewModel() {
-    _status = _appViewModel.getState();
-  }
-
-  void setStatus(AppState state) {
-    _status = state;
-  }
 
   dynamic get userProfile => Preference.getMap("profile") == null
       ? null
@@ -42,6 +31,12 @@ class AuthViewModel extends Model {
     if (response['status']) {
       Profile _profile = Profile.fromJson(response['data']);
       // prefs.setString('uid', _profile.id);
+      await locator<ProductViewModel>().getAvailableProducts(
+                                _profile.token);
+      await locator<ProductViewModel>().getUnavailableProducts(
+                                _profile.token);
+      await locator<ProductViewModel>().getCategories(
+                                _profile.token);
       Preference.setBool('userloggedIn', true);
       Preference.setMap("profile", _profile.toMap());
       notifyListeners();
@@ -65,6 +60,17 @@ class AuthViewModel extends Model {
     var response = await _authService.register(user);
     // print("auth response $response");
     if (response['status']) {
+      Profile _profile = Profile.fromJson(response['data']);
+      // prefs.setString('uid', _profile.id);
+      await locator<ProductViewModel>().getAvailableProducts(
+                                _profile.token);
+      await locator<ProductViewModel>().getUnavailableProducts(
+                                _profile.token);
+      await locator<ProductViewModel>().getCategories(
+                                _profile.token);
+      Preference.setBool('userloggedIn', true);
+      Preference.setMap("profile", _profile.toMap());
+      
       notifyListeners();
       return response;
     } else {

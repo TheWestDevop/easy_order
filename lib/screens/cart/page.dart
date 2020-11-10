@@ -20,7 +20,7 @@ class _CartPageState extends State<CartPage> {
     progressDialog.setMessage('verifying coupon ...');
     return ScopedModelDescendant<CartViewModel>(
         builder: (context, child, model) {
-      total = (locator<CartViewModel>().cart_cost + 1000.00 + 10.00);
+      total = (locator<CartViewModel>().cart_cost + 500.00 + 10.00);
       return Scaffold(
         resizeToAvoidBottomPadding: false,
         appBar: pageAppBar(context, Constant.cartItem),
@@ -33,6 +33,7 @@ class _CartPageState extends State<CartPage> {
                 padding: EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
                 height: 150,
                 child: Card(
+                  elevation:12.0,
                   child: Column(
                     children: <Widget>[
                       Padding(
@@ -52,7 +53,7 @@ class _CartPageState extends State<CartPage> {
                           children: <Widget>[
                             Text("Shipping cost"),
                             Text(
-                              formatMoney(1000),
+                              formatMoney(500),
                               style: TextStyle(fontSize: 14),
                             ),
                           ],
@@ -90,23 +91,52 @@ class _CartPageState extends State<CartPage> {
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: Container(
-                    width: 350,
+                child: Column(
+                  children: [
+                    Container(
+                        width: 350,
+                        height: 55.0,
+                        child: Material(
+                            borderRadius: BorderRadius.circular(20.0),
+                            shadowColor: Constant.getColor("1b4332"),
+                            color: Constant.getColor("1b4332"),
+                            elevation: 2.0,
+                            child: RaisedButton(
+                              color: model.cartListing.isEmpty
+                                  ? Colors.green[800]
+                                  : Constant.getColor("1b4332"),
+                              onPressed: () => model.cartListing.isEmpty
+                                  ? null
+                                  : Navigator.of(context).pushNamed('/place_order'),
+                              child: Text(
+                                Constant.checkoutLabel,
+                                style: TextStyle(
+                                  //height:2.0,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Montserrat',
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ))),
+                    Container(
+                    padding: const EdgeInsets.all(5.0),
+                    width: 300,
                     height: 55.0,
                     child: Material(
                         borderRadius: BorderRadius.circular(20.0),
-                        shadowColor: Colors.green[900],
-                        color: Colors.green[900],
+                        shadowColor: Constant.getColor("1b4332"),
+                        color: Constant.getColor("1b4332"),
                         elevation: 2.0,
                         child: RaisedButton(
                           color: model.cartListing.isEmpty
-                              ? Colors.green[200]
-                              : Colors.green[900],
+                              ? Colors.red[400]
+                              : Colors.redAccent[400],
                           onPressed: () => model.cartListing.isEmpty
                               ? null
-                              : Navigator.of(context).pushNamed('/place_order'),
+                              : model.clear_cart(),
                           child: Text(
-                            Constant.checkoutLabel,
+                            Constant.clearCartLabel,
                             style: TextStyle(
                               //height:2.0,
                               color: Colors.white,
@@ -116,13 +146,18 @@ class _CartPageState extends State<CartPage> {
                             ),
                           ),
                         ))),
+                  ],
+                ),
               ),
               Container(
-                height:MediaQuery.of(context).size.height/2,
-                child: ListView(
-                  shrinkWrap: true,
-                  // scrollDirection: Axis.vertical,
-                  children: locator<CartViewModel>().cartListing.map((d) => generateCart(d)).toList(),
+                height:MediaQuery.of(context).size.height * 0.855,
+                child: Card(
+                    elevation:12,
+                    child: ListView(
+                    shrinkWrap: true,
+                    // scrollDirection: Axis.vertical,
+                    children: locator<CartViewModel>().cartListing.map((d) => generateCart(d)).toList(),
+                  ),
                 ),
               ),
               // ScopedModelDescendant<OrderViewModel>(
@@ -169,18 +204,18 @@ class _CartPageState extends State<CartPage> {
               //                 print("total is === $total");
               //               });
               //             });
-              //             // model.verifyCoupon(value,user.token).then((result) {
-              //             //   if (result['status']) {
-              //             //
-              //             //   locator<CartViewModel>().update_total_base_on_coupon(500);
-              //             //     progressDialog.hide();
-              //             //   } else {
-              //             //     progressDialog.hide();
-              //             //     ToastOn(result['message'], Colors.redAccent,
-              //             //         Colors.white, 20.0);
-              //             //   }
-              //             // }
-              //             // );
+                          // model.verifyCoupon(value,user.token).then((result) {
+                          //   if (result['status']) {
+                          //
+                          //   locator<CartViewModel>().update_total_base_on_coupon(500);
+                          //     progressDialog.hide();
+                          //   } else {
+                          //     progressDialog.hide();
+                          //     ToastOn(result['message'], Colors.redAccent,
+                          //         Colors.white, 20.0);
+                          //   }
+                          // }
+                          // );
               //           })
               //     ],
               //   );

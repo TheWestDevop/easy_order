@@ -1,4 +1,4 @@
-import 'package:easy_order/models/models.dart';
+import 'package:easy_order/models/Models.dart';
 import 'package:easy_order/shared/shared.dart';
 import 'package:easy_order/viewModel/viewModel.dart';
 import 'package:easy_order/widgets/widget.dart';
@@ -161,7 +161,7 @@ Widget chefDetailsBottomNavigation(ChefViewModel viewModel,Function showCartSnak
 }
 
 
-Widget generateBookingList(Bookings bookings, context) {
+Widget generateBookingList(Booking bookings, context) {
   var item = bookings.toMap();
   IconData icon;
   Color iconbgColor;
@@ -185,20 +185,7 @@ Widget generateBookingList(Bookings bookings, context) {
   );
 }
 
-Widget emptyBookingList() {
-  return Container(
-    alignment: Alignment.center,
-    child: Text(
-      "No Booking Available",
-      style: TextStyle(
-        color: Colors.black87,
-        fontStyle: FontStyle.italic,
-        fontSize: 20,
-        fontFamily: "LineAwesome",
-      ),
-    ),
-  );
-}
+
 
 class BookingItem extends StatefulWidget {
   final IconData icon;
@@ -206,7 +193,7 @@ class BookingItem extends StatefulWidget {
   final String created_at;
   final String dish;
   final String dish_cost;
-  final Bookings item;
+  final Booking item;
 
   BookingItem(this.icon, this.iconBgColor, this.dish, this.dish_cost,
       this.item, this.created_at);
@@ -244,7 +231,7 @@ class _BookingItemState extends State<BookingItem> {
         child: ListTile(
           onTap: () => {
             //print(widget.item.toMap()),
-            Navigator.of(context).pushNamed('/order/detail', arguments: widget.item)
+          //  Navigator.of(context).pushNamed('/booking/detail', arguments: widget.item)
           },
           trailing: Icon(
             Icons.chevron_right,

@@ -21,9 +21,9 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    
     return new Scaffold(
       resizeToAvoidBottomPadding: false,
+      backgroundColor: Colors.white,
       body: ListView(
         scrollDirection: Axis.vertical,
         children: <Widget>[
@@ -32,8 +32,23 @@ class _LoginFormState extends State<LoginForm> {
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  loginHeader(),
                   Container(
+                    width: 250,
+                    height: 400,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(24.0),
+                      child: Image.asset(
+                        "assets/icon/icon.png",
+                        fit: BoxFit.cover,
+                        width: 250,
+                        height: 230,
+                        alignment: Alignment.topRight,
+                      ),
+                    ),
+                    // ),
+                  ),
+                  Container(
+                    color: Colors.white,
                     padding: EdgeInsets.only(top: 35, left: 20.0, right: 20.0),
                     child: Column(
                       children: <Widget>[
@@ -122,7 +137,6 @@ class _LoginFormState extends State<LoginForm> {
               color: Constant.getColor("1b4332"),
               elevation: 7.0,
               child: RaisedButton(
-                 
                   color: Constant.getColor("1b4332"),
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -155,16 +169,18 @@ class _LoginFormState extends State<LoginForm> {
                     } else {
                       _globalKey.currentState.save();
                       progressDialog.show();
-                      authViewModel
-                          .loginUser(_email, _password)
-                          .then((result) {
+                      authViewModel.loginUser(_email, _password).then((result) {
                         if (result['status']) {
                           progressDialog.hide();
-                          Navigator.of(context).pushNamed('/home',arguments:result['user']);
+                          // print("response ===> $result");
+                          // print("user info ===> ${result['user']}");
+                          Navigator.of(context)
+                              .pushNamed('/home', arguments: result['user']);
                         } else {
                           progressDialog.hide();
                           Navigator.of(context).pushNamed('/login');
-                          ToastOn("Invalid email or password.", Colors.redAccent, Colors.white, 20.0);
+                          ToastOn("Invalid email or password.",
+                              Colors.redAccent, Colors.white, 20.0);
                         }
                       });
                     }

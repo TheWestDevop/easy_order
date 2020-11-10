@@ -1,11 +1,9 @@
-import 'dart:convert';
 
-import 'package:flutter/material.dart';
-import 'package:easy_order/models/models.dart';
+import 'package:easy_order/models/Models.dart';
 import 'package:easy_order/shared/shared.dart';
 
-class OrderService extends ChangeNotifier {
-  AppState _status = AppState.Idle;
+class OrderService {
+
   String _message;
   Order _order;
   API _api = new API();

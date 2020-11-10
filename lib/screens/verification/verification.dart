@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
-import 'package:easy_order/models/models.dart';
+import 'package:easy_order/models/Models.dart';
 import 'package:easy_order/viewModel/viewModel.dart';
 import 'package:easy_order/widgets/widget.dart';
 import 'package:flutter/material.dart';

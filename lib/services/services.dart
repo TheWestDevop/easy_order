@@ -1,6 +1,7 @@
-export './orderService.dart';
-export './productService.dart';
-export './authService.dart';
-export './accountService.dart';
-export './kitchenService.dart';
-export './chefService.dart';
+export './OrderService.dart';
+export './ProductService.dart';
+export 'RecipeService.dart';
+export './AuthService.dart';
+export './AccountService.dart';
+export './KitchenService.dart';
+export 'ChefService.dart';

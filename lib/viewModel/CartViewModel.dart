@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:easy_order/models/models.dart';
+import 'package:easy_order/models/Models.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:sqflite/sqflite.dart';
@@ -18,7 +18,6 @@ class CartViewModel extends Model {
   Database _db;
   String _message;
 
-  String get message => _message;
 
   List<Product> _cart = [];
   double sub_total;
@@ -152,6 +151,7 @@ class CartViewModel extends Model {
 
   // Cart Listing
   List<Product> get cartListing => _cart;
+  
   double get cart_cost => sub_total;
 
   void increaseQuantity(Product product) async {
@@ -162,8 +162,8 @@ class CartViewModel extends Model {
       int quantity = int.parse(cart[0]['quantity']) + 1;
       var qry =
           "UPDATE cart_list set quantity = $quantity where id = ${product.id}";
-      var res = await _db.rawUpdate(qry);
-      var ncart = await _db.rawQuery('SELECT * FROM cart_list');
+      await _db.rawUpdate(qry);
+      // await _db.rawQuery('SELECT * FROM cart_list');
       // print("CART ITEMS ${ncart}");
       // this.sumTotal();
       this.fetchCartList();
@@ -241,7 +241,7 @@ class CartViewModel extends Model {
 
   void clear_cart() async {
     _cart.clear();
-    await _db.rawQuery('TRUNCATE cart_list');
+    await _db.rawQuery('DELETE FROM cart_list WHERE id >= 1');
     await  this.fetchCartList();
     notifyListeners();
   }

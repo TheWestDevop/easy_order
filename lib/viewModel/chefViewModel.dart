@@ -1,6 +1,6 @@
 
 
-import 'package:easy_order/models/models.dart';
+import 'package:easy_order/models/Models.dart';
 import 'package:easy_order/services/services.dart';
 import 'package:easy_order/shared/shared.dart';
 import 'package:easy_order/viewModel/viewModel.dart';
@@ -13,10 +13,8 @@ class ChefViewModel extends Model {
 
   List<Chef> _data = [];
   
-   // Item List
-  List<Chef> get itemListing => _data;
 
-  List<Bookings> _user_bookings = [];
+  List<Booking> _user_bookings = [];
 
 
 
@@ -40,13 +38,13 @@ class ChefViewModel extends Model {
     if (response['status']) {
       _user_bookings.clear();
       List<dynamic> list = response['data'];
-      _user_bookings = list.map((item) => Bookings.fromJson(item)).toList();
+      _user_bookings = list.map((item) => Booking.fromJson(item)).toList();
       notifyListeners();
     }
     return response;
   }
 
-  List<Bookings> get bookings => _user_bookings;
+  List<Booking> get bookings => _user_bookings;
 
   // fetchChef() async {
   //   try {

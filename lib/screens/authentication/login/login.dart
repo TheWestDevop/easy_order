@@ -4,6 +4,7 @@
 
 
 
+import 'package:easy_order/models/Models.dart';
 import 'package:easy_order/screens/screen.dart';
 import 'package:easy_order/shared/shared.dart';
 import 'package:easy_order/viewModel/viewModel.dart';

@@ -21,12 +21,6 @@ class _SearchViewState extends State<SearchView> {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-
-    /*24 is for notification bar on Android*/
-    final double itemHeight = (size.height - kToolbarHeight - 24) / 3;
-    final double itemWidth = size.width / 2;
-
     return ScopedModelDescendant<ProductViewModel>(
         builder: (context, child, model) {
       return Scaffold(
@@ -37,9 +31,9 @@ class _SearchViewState extends State<SearchView> {
             children: <Widget>[
               searchField(),
               SizedBox(height:15,),
-              items.isEmpty ? Text("No Product Found Yet",style:TextStyle(fontSize:20,color: Colors.grey[350]),) :
+              items.isEmpty ? Text("No Product Found",style:TextStyle(fontSize:20,color: Colors.grey[350]),) :
               Expanded(
-                child: productsGrid(items,(itemWidth / itemHeight))
+                child: productsGrid(items)
              )
             ]),
           );
@@ -69,7 +63,7 @@ class _SearchViewState extends State<SearchView> {
   }
 
   void filterSearchResults(String query) {
-    List<Product> productSearchList = productViewModel.products;
+    List<Product> productSearchList = productViewModel.demo_products;
     if (query.isNotEmpty) {
       List<Product> searchedListData = List<Product>();
 

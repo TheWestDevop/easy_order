@@ -14,7 +14,7 @@ class _ProductViewState extends State<ProductView> {
 
   @override
   void initState() {
-    items.addAll(productViewModel.products);
+    items.addAll(productViewModel.demo_products);
     super.initState();
   }
 

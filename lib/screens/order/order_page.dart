@@ -43,7 +43,7 @@ class _OrderPageState extends State<OrderPage> {
                     child: status
                         ? Text("")
                         : (locator<OrderViewModel>().orders.isEmpty
-                            ? emptyOrderList()
+                            ? emptyContentList("No Order Available")
                             : Container(
                               color:Colors.white38,
                               child: ListView(

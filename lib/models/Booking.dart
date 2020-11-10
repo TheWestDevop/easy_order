@@ -1,4 +1,4 @@
-class Bookings {
+class Booking {
   int id;
   String booking_id;
   String user_id;
@@ -13,7 +13,7 @@ class Bookings {
 
 
 
-  Bookings.fromJson(Map<String, dynamic> data)
+  Booking.fromJson(Map<String, dynamic> data)
       : id = data['id'] ?? '',
         booking_id = data['booking_id'] ?? '',
         user_id = data['user_id'] ?? '',
@@ -26,7 +26,7 @@ class Bookings {
         booking_location = data['booking_location'] ?? '',
         created_at = data['created_at'] ?? '';
 
-  Bookings.map(dynamic data)
+  Booking.map(dynamic data)
       : id = data.id ?? '',
         booking_id = data.booking_id ?? '',
         user_id = data.user_id ?? '',

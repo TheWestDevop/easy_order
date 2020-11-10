@@ -41,7 +41,7 @@ class _ErrorState extends State<Error> {
               child: Text(
                 '.',
                 style:TextStyle(
-                  fontSize:50.0,fontWeight:FontWeight.bold,color:Colors.deepPurple)
+                  fontSize:50.0,fontWeight:FontWeight.bold,color:Constant.getColor("1b4332"))
                 ),
               ),
 
@@ -58,11 +58,11 @@ class _ErrorState extends State<Error> {
                  height:55.0,
                  child:Material(
                 borderRadius:BorderRadius.circular(20.0),
-                shadowColor:Colors.deepPurpleAccent,
-                color:Colors.deepPurple,
+                shadowColor:Constant.getColor("1b4332"),
+                color:Constant.getColor("1b4332"),
                 elevation:7.0,
                 child:GestureDetector(
-                  onTap:()=>Navigator.of(context).pushNamed('/'),
+                  onTap:()=>Navigator.of(context).pushNamed('/login'),
                   child: Center(
                     child:Text(
                       Constant.homelabel,
@@ -89,11 +89,11 @@ class _ErrorState extends State<Error> {
                  ),
                  SizedBox(width:5.0,),
                  InkWell(
-                onTap:()=>Navigator.of(context).pushNamed('/'),
+                onTap:()=>Navigator.of(context).pushNamed('/login'),
                 child:Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Text(Constant.loginLabel,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Montserrat', color: Colors.deepPurple)),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Montserrat', color: Constant.getColor("1b4332"))),
                     
                   ),
               ),

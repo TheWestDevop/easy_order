@@ -32,7 +32,7 @@ class _SearchChefsPageState extends State<SearchChefsPage> {
         body:  SingleChildScrollView(
                   child: Container(
             padding: const EdgeInsets.all(10.0),
-            height: size.height / 2,
+            // height: size.height / 2,
             child: Card(
               child: Column(
                 children: <Widget>[
@@ -78,7 +78,7 @@ class _SearchChefsPageState extends State<SearchChefsPage> {
                                   ? null
                                   : handleSearch(context),
                               child: Text(
-                                Constant.searchChefNickName,
+                                Constant.searchChefLabel,
                                 style: TextStyle(
                                   //height:2.0,
                                   color: Colors.white,

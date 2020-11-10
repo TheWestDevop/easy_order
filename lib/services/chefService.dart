@@ -1,4 +1,4 @@
-import 'package:easy_order/models/models.dart';
+import 'package:easy_order/models/Models.dart';
 import 'package:easy_order/shared/shared.dart';
 
 class ChefService {
@@ -124,7 +124,7 @@ class ChefService {
       final response = await _api.Get(url,authToken);
       return response;
   }
-  Future<dynamic> bookChef(){
+  Future<dynamic> bookedChef(){
 
   }
   Future<dynamic> payHalfToChefWallet(){

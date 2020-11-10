@@ -1,5 +1,5 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:easy_order/models/models.dart';
+import 'package:easy_order/models/Models.dart';
 import 'package:easy_order/screens/screen.dart';
 import 'package:easy_order/shared/shared.dart';
 import 'package:easy_order/viewModel/viewModel.dart';
@@ -21,13 +21,10 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final cartViewModel = locator<CartViewModel>();
-  final accountViewModel = locator<AccountViewModel>();
-  final productViewModel = locator<ProductViewModel>();
-
+  
   @override
   void initState() {
-    cartViewModel.fetchCartList();
+    locator<CartViewModel>().fetchCartList();
     super.initState();
     // print("user object ====> ${widget.user.toMap()}");
   }
@@ -36,13 +33,15 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ScopedModel<AccountViewModel>(
-          model: accountViewModel,
+          model: locator<AccountViewModel>(),
           child: ScopedModel<CartViewModel>(
-              model: cartViewModel,
+              model: locator<CartViewModel>(),
               child: ScopedModel<ProductViewModel>(
-                  model: productViewModel,
-                  child: ScopedModel<ProductViewModel>(
-                      model: productViewModel, child: HomePage(widget.user))))),
+                  model: locator<ProductViewModel>(), 
+                      child: HomePage(widget.user)
+                      )
+                    )
+                  ),
     );
   }
 }

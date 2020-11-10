@@ -1,5 +1,5 @@
 
-import 'package:easy_order/models/models.dart';
+import 'package:easy_order/models/Models.dart';
 import 'package:easy_order/shared/shared.dart';
 import 'package:easy_order/viewModel/viewModel.dart';
 import 'package:easy_order/widgets/product.dart';
@@ -11,32 +11,6 @@ import 'package:money2/money2.dart';
 
 import 'package:scoped_model/scoped_model.dart';
 
-Widget nextBtn(
-  context,
-  String route,
-) {
-  return Container(
-      height: 55.0,
-      child: Material(
-          borderRadius: BorderRadius.circular(20.0),
-          shadowColor: Constant.getColor("1b4332"),
-          color: Constant.getColor("1b4332"),
-          elevation: 7.0,
-          child: GestureDetector(
-            onTap: () => Navigator.of(context).pushNamed(route), //:  null,
-            child: Center(
-                child: Text(
-              Constant.nextLabel,
-              style: TextStyle(
-                //height:2.0,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Montserrat',
-                fontSize: 25,
-              ),
-            )),
-          )));
-}
 
 formatMoney(double price) {
   // print("naira symbol ---> ${}");
@@ -59,13 +33,13 @@ AppBar buildAppBar(
             color: Colors.white),
         onPressed: () => _scaffoldKey.currentState.openDrawer()),
     actions: <Widget>[
-      GestureDetector(
-        onTap: () => Navigator.of(context).pushNamed('/search'),
-        child: Icon(
-          MaterialCommunityIcons.getIconData("magnify"),
-          color: Colors.white,
-        ),
-      ),
+      // GestureDetector(
+      //   onTap: () => Navigator.of(context).pushNamed('/search'),
+      //   child: Icon(
+      //     MaterialCommunityIcons.getIconData("magnify"),
+      //     color: Colors.white,
+      //   ),
+      // ),
       Stack(
         children: <Widget>[
           IconButton(
@@ -162,6 +136,65 @@ AppBar pageAppBar(BuildContext context, String title) {
   );
 }
 
+AppBar specialPageAppBar(
+    BuildContext context,  String title,String route) {
+  return AppBar(
+    title: Text(
+      title,
+      style: TextStyle(color: Colors.white, fontSize: 16),
+    ),
+    leading: new IconButton(
+        icon: new Icon(MaterialCommunityIcons.getIconData("keyboard-backspace"),
+            color: Colors.white),
+        onPressed: () => Navigator.of(context).pop()),
+    actions: <Widget>[
+      GestureDetector(
+        onTap: () => Navigator.of(context).pushNamed(route),
+        child: Icon(
+          MaterialCommunityIcons.getIconData("magnify"),
+          color: Colors.white,
+        ),
+      ),
+      Stack(
+        children: <Widget>[
+          IconButton(
+            icon: Icon(
+              MaterialCommunityIcons.getIconData("cart-outline"),
+            ),
+            color: Colors.white,
+            onPressed: () => Navigator.of(context).pushNamed('/cart'),
+          ),
+          Positioned(
+            left: 20.0,
+            child: ScopedModelDescendant<CartViewModel>(
+              builder: (context, child, model) {
+                return Container(
+                  child: Align(
+                      alignment: Alignment.topCenter,
+                      // widthFactor:1,
+                      // heightFactor:.5,
+                      child: Text(
+                        (model.cartListing.length > 0)
+                            ? model.cartListing.length.toString()
+                            : "",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 10,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w900),
+                      )),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    ],
+    backgroundColor: Constant.getColor("1b4332"),
+  );
+}
+
+
 leftDrawerMenu(Profile user, BuildContext context) {
   Color blackColor = Colors.white;
 
@@ -199,8 +232,11 @@ leftDrawerMenu(Profile user, BuildContext context) {
                         color: blackColor),
                   ),
                   leading: CircleAvatar(
-                    child: cacheImage(user.avatar),
-                    radius: 25,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: cacheImage(user.avatar),
+                    ),
+                    radius: 30,
                     // backgroundImage: NetworkImage(user.avatar),
                     // backgroundImage: NetworkImage("https://img.icons8.com/color/48/000000/person-male.png"),
                   ),
@@ -243,23 +279,12 @@ leftDrawerMenu(Profile user, BuildContext context) {
         ListTile(
           leading:
           Icon(Feather.getIconData('file-text'), color: blackColor),
-          title: Text('How To',
+          title: Text('Recipes',
               style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                   color: blackColor)),
-          onTap: () {
-            //Nav.route(context, ProductList());
-          },
-        ),
-        ListTile(
-          leading: Icon(Feather.getIconData('search'), color: blackColor),
-          title: Text('Search',
-              style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: blackColor)),
-          onTap: () => Navigator.of(context).pushNamed('/search'),
+          onTap: () => Navigator.of(context).pushNamed('/posts'),
         ),
         ListTile(
           trailing: Icon(
@@ -361,10 +386,10 @@ class LoadingIndicator extends StatelessWidget {
           duration: Duration(milliseconds: 300),
           alignment: Alignment.center,
           child: FlareActor(
-            'assets/icon/loader.flr',
+            'assets/icon/image_loader.flr',
             alignment: Alignment.center,
             fit: BoxFit.contain,
-            animation: 'load',
+            animation: 'loader',
           ),
         )),
       );

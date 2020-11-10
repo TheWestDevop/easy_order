@@ -1,4 +1,4 @@
-import 'package:easy_order/models/models.dart';
+import 'package:easy_order/models/Models.dart';
 import 'package:easy_order/services/services.dart';
 import 'package:easy_order/viewModel/viewModel.dart';
 import 'package:easy_order/widgets/widget.dart';

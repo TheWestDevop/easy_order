@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:http/http.dart' as connect;
 
 class API {
-  Future Post(url, data, [authToken]) async {
+   Future Post(url, data, [authToken]) async {
     print("sending POST request to $url ");
 
     final response = await connect.post(url,

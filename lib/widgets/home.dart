@@ -1,5 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:easy_order/models/models.dart';
+import 'package:easy_order/models/Models.dart';
 import 'package:easy_order/shared/shared.dart';
 import 'package:easy_order/viewModel/viewModel.dart';
 import 'package:easy_order/widgets/widget.dart';
@@ -169,7 +169,7 @@ CarouselSlider buildCarouselSlider(List<dynamic> ads) {
 }
 
 class CategoriesListView extends StatelessWidget {
-  final List<dynamic> categories;
+  final List<Category> categories;
   // final List<String> categoryTitle;
 
   const CategoriesListView({
@@ -192,7 +192,9 @@ class CategoriesListView extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 return GestureDetector(
                   onTap: () {
-                    print("Category ID is ---> ${categories[index]['id']}");
+                    // print("Category ID is ---> ${categories[index].id}");
+                    Navigator.of(context).pushNamed("/product/category",
+                        arguments:[categories[index].id,categories[index].title]);
                   },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 4),
@@ -218,7 +220,7 @@ class CategoriesListView extends StatelessWidget {
                               shape: BoxShape.circle,
                               image: DecorationImage(
                                 image: NetworkImage(
-                                   categories[index]['icon'],
+                                  categories[index].icon,
                                 ),
                                 fit: BoxFit.fill,
                               ),
@@ -228,7 +230,7 @@ class CategoriesListView extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            categories[index]['title'],
+                            categories[index].title,
                             style: TextStyle(
                               fontSize: 10,
                               fontFamily: 'FontAwesome5Brands',

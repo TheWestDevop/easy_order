@@ -15,8 +15,6 @@ class HomeScreenState extends State<HomeScreenPage> {
     super.initState();
   }
 
-  
-
   final List<dynamic> imgList = [
     {
       "heading": "header one",
@@ -64,7 +62,6 @@ class HomeScreenState extends State<HomeScreenPage> {
 
   @override
   Widget build(BuildContext context) {
-
     return new Scaffold(
       resizeToAvoidBottomPadding: false,
       //appBar: homebar(context, Constant.homelabel),
@@ -74,21 +71,7 @@ class HomeScreenState extends State<HomeScreenPage> {
             child: Column(
               children: <Widget>[
                 CategoriesListView(
-                  categories: [
-                    {"id": 1, "icon": 'https://img.icons8.com/color/48/000000/food-donor.png', "title": 'All'},
-                    {"id": 2, "icon": 'https://img.icons8.com/color/48/000000/grains-of-rice.png', "title": 'Grains'},
-                    {"id": 3, "icon": 'https://img.icons8.com/color/48/000000/sweet-potato.png', "title": 'Tubers'},
-                    {"id": 4, "icon": 'https://img.icons8.com/color/48/000000/paprika.png', "title": "Peppers"},
-                    {
-                      "id": 5,
-                      "icon": 'https://img.icons8.com/offices/48/000000/pepper-shaker.png',
-                      "title": "Spices",
-                    },
-                    {"id": 6, "icon": 'https://img.icons8.com/ios/48/000000/grass.png', "title": 'Cereals'},
-                    {"id": 7, "icon": 'https://img.icons8.com/color/48/000000/group-of-fruits.png', "title": 'Fruits'},
-                    {"id": 8, "icon": 'https://img.icons8.com/color/48/000000/group-of-vegetables.png', "title": 'Vegetables'},
-                    {"id": 9, "icon": 'https://img.icons8.com/color/48/000000/olive-oil.png', "title": 'Oils'}
-                  ],
+                  categories: productViewModel.categories,
                 ),
                 buildCarouselSlider(imgList),
                 SizedBox(
@@ -110,7 +93,8 @@ class HomeScreenState extends State<HomeScreenPage> {
                       ),
                       Expanded(
                         child: GestureDetector(
-                          // onTap: () => ,
+                          onTap: () => Navigator.of(context)
+                              .pushNamed("/featured/product",arguments:[productViewModel.demo_products,"Popular Trendings"]),
                           child: Text(
                             "View all",
                             style: TextStyle(
@@ -125,14 +109,14 @@ class HomeScreenState extends State<HomeScreenPage> {
                     ],
                   ),
                 ),
-                buildTrending(productViewModel.products),
+                buildTrending(productViewModel.demo_products),
                 Padding(
                   padding: const EdgeInsets.all(6.0),
                   child: Row(
                     children: <Widget>[
                       Expanded(
                         child: Text(
-                          "Best Package",
+                          "Upcoming Products",
                           style: TextStyle(
                               fontSize: 15.0, fontWeight: FontWeight.bold),
                           textAlign: TextAlign.start,
@@ -140,9 +124,9 @@ class HomeScreenState extends State<HomeScreenPage> {
                       ),
                       Expanded(
                         child: GestureDetector(
-                          onTap: () {
-                            print("Clicked");
-                          },
+                          onTap: () =>
+                              Navigator.of(context)
+                              .pushNamed("/upcoming/product",arguments:[productViewModel.demo_upcoming_products,"Upcoming Products"]),
                           child: Text(
                             "View all",
                             style: TextStyle(
@@ -156,7 +140,7 @@ class HomeScreenState extends State<HomeScreenPage> {
                     ],
                   ),
                 ),
-                buildTrending(productViewModel.products),
+                buildUpcoming(productViewModel.demo_upcoming_products),
                 // Occasions(),
                 // Occasions(),
               ],

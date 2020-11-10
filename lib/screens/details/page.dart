@@ -76,7 +76,7 @@ class DetailsPageState extends State<DetailsPage>{
                             child: PageView(
                               controller: _controller,
                               onPageChanged: (index){
-                                print(index);
+                                // print(index);
                                 setState(() {
                                                                   active = index;
                                                                 });
@@ -134,10 +134,36 @@ class DetailsPageState extends State<DetailsPage>{
                                                   child: Column(
                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                     children: <Widget>[
+                                                      Text(
+                                                        "Product Title",
+                                                        style: TextStyle(
+                                                            fontSize:15,
+                                                            fontFamily: "FontAwesome5",
+                                                            fontWeight: FontWeight.w500,
+                                                            fontStyle: FontStyle.italic,
+                                                            color: Colors.grey
+                                                            ),
+                                                      ),
+                                                      SizedBox(
+                                                        height:5,
+                                                      ),
                                                       Text(widget.detail.title,style: TextStyle(fontWeight: FontWeight.w500,fontSize: 19.0,color: Colors.green[900])),
+                                                      SizedBox(
+                                                        height:15,
+                                                      ),
+                                                      Text(
+                                                        "Product Detail",
+                                                        style: TextStyle(
+                                                            fontSize:15,
+                                                            fontFamily: "FontAwesome5",
+                                                            fontWeight: FontWeight.w500,
+                                                            fontStyle: FontStyle.italic,
+                                                            color: Colors.grey
+                                                            ),
+                                                      ),
                                                       Padding(
-                                                        padding: EdgeInsets.only(top: 10.0),
-                                                        child: Text(widget.detail.description,style: TextStyle(fontWeight: FontWeight.w500,fontSize: 15.0,color: Colors.green[900])),
+                                                        padding: EdgeInsets.only(top:5.0),
+                                                        child: Text(widget.detail.description,style: TextStyle(fontWeight: FontWeight.w500,fontSize: 15.0,color: Colors.black87)),
                                                       )
                                                     ],
                                                   ),

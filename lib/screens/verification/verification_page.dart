@@ -40,14 +40,14 @@ class _VerificationFormState extends State<VerificationForm> {
     progressDialog.setMessage('Processing order ...');
     // print("address 1 ==> $_address");
     // print("address  2 ==> ${controller.text}");
-    final format = DateFormat("EEEE, d MMMM yyyy h:mm a");
+    final format = DateFormat("EEE, d MMM yyyy h:mm a");
     _currentPreOrderDate = DateTime.now().add(Duration(days: 2));
     totalCost = (_orderType == 'Instant Order' || _orderType == null)
         ? order_cost * 100
         : (order_cost + pre_order_charge);
 
-    print("total cost price  ==> $totalCost");
-    print("current pre order date  ==> $_currentPreOrderDate");
+    // print("total cost price  ==> $totalCost");
+    // print("current pre order date  ==> $_currentPreOrderDate");
 
     return new Scaffold(
       resizeToAvoidBottomPadding: false,
@@ -172,8 +172,8 @@ class _VerificationFormState extends State<VerificationForm> {
                                     preOrderDeliveryDate = datePicked;
                                     _currentPreOrderDate = datePicked;
                                     pre_order_charge = 1500;
-                                    print(
-                                        "pre order date selected ---> ${preOrderDeliveryDate.toString()}");
+                                    // print(
+                                    //     "pre order date selected ---> ${preOrderDeliveryDate.toString()}");
                                     return DateTimeField.combine(date, time);
                                   } else {
                                     ToastOn(
@@ -236,7 +236,7 @@ class _VerificationFormState extends State<VerificationForm> {
   }
 
   _handleCheckout(double _amount) async {
-    print("Amount to be paid ----> $_amount");
+    // print("Amount to be paid ----> $_amount");
 
     Charge charge = Charge()
       ..amount = _amount.round()

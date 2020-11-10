@@ -181,7 +181,7 @@ class Register_PageState extends State<Register_Page> {
         if (val == null || val.isEmpty || val.length < 7) {
      return "Invalid Password";
    } else if(val != _password){
-     return "Password And Confirm Password Not Mis-Matched";
+     return "Password and confirm password mismatched";
    } else {
      return null;
    }
@@ -248,9 +248,9 @@ class Register_PageState extends State<Register_Page> {
     var result = await locator<AuthViewModel>().registerUser(_name, _phone, _email, _password);
       if (result['status']) {
         progressDialog.hide();
-        Navigator.of(context).pushNamed('/login',);
+        Navigator.of(context).pushNamed('/home',);
         ToastOn(
-                   result['data'],
+                   "Hurray!!!,Your Account Has Been Created Successfully",
                     Colors.greenAccent[400],
                     Colors.white,
                     18.0);
